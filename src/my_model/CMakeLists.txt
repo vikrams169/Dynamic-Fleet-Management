@@ -83,7 +83,7 @@ message(STATUS "WANT_COVERAGE    = ${WANT_COVERAGE}")
 
 
 ###################################################
-# Doxygen Rule
+# Doxygen Rules
 # ref: https://cmake.org/cmake/help/latest/module/FindDoxygen.html
 ###################################################
 if (DOXYGEN_FOUND)

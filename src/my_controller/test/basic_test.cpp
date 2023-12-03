@@ -61,10 +61,10 @@ class TaskPlanningFixture : public testing::Test {
     if (retVal != 0)
       return false;
     
-    // Wait about 3 seconds for the node to show up
+    // Wait for at most 10 seconds for the node to show up, otherwise it's an error!
     retVal = -1;
     int count  = 0;
-    while ((count++ < 3) && (retVal != 0)) {
+    while ((count++ < 10) && (retVal != 0)) {
       retVal = system (cmdInfo_ss.str().c_str());
       sleep (1);
     }

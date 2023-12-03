@@ -1,4 +1,4 @@
-# my_model
+# `my_model`
 
 ## Overview
 
