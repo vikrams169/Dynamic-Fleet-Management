@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.8)
-project(my_controller)
+project(dynamic_fleet management)
 
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
@@ -12,7 +12,7 @@ find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
 find_package(Doxygen REQUIRED)
-find_package(my_model REQUIRED) # add my_model
+find_package(swarm_control REQUIRED) # add my_model
 
 ############################################
 # Set up level 2 unit test (i.e, integration test)
@@ -34,7 +34,7 @@ if(BUILD_TESTING)
   ament_target_dependencies(${PROJECT_NAME}_test
     rclcpp std_msgs
   )
-  target_link_libraries(${PROJECT_NAME}_test my_model)
+  target_link_libraries(${PROJECT_NAME}_test swarm_control)
 endif()
 
 ###################################################
@@ -87,31 +87,31 @@ doxygen_add_docs(docs           # target name
   )
 
 # Add executables:
-add_executable(talker
-  src/publisher_member_function.cpp)
-add_executable(listener
-  src/subscriber_member_function.cpp)
+#add_executable(talker
+#  src/publisher_member_function.cpp)
+#add_executable(listener
+#  src/subscriber_member_function.cpp)
 
 # Add executable dependencis:
-ament_target_dependencies(talker
-  rclcpp std_msgs)
-target_link_libraries(talker 
-  my_model)
+#ament_target_dependencies(talker
+#  rclcpp std_msgs)
+#target_link_libraries(talker 
+#  swarm_control)
 
-ament_target_dependencies(listener
-  rclcpp std_msgs)
-target_link_libraries(listener
-  my_model)
+#ament_target_dependencies(listener
+#  rclcpp std_msgs)
+#target_link_libraries(listener
+#  swarm_control)
 
 ###################################
 # Installation
 ###################################
 
 # Install executables:
-install(TARGETS
-  talker
-  listener
-  DESTINATION lib/${PROJECT_NAME})
+#install(TARGETS
+#  talker
+#  listener
+#  DESTINATION lib/${PROJECT_NAME})
 
 # install launch files
 install(DIRECTORY
