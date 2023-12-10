@@ -27,8 +27,7 @@ SOFTWARE.
  * 
  */
 #include<memory>
-#include<RVO>
-#include<my_dummy_lib_funct2.hpp>
+// #include<RVO>
 #include<vector>
 
 #pragma once
@@ -39,16 +38,16 @@ SOFTWARE.
  */
 class Environment {
  private:
-  std::vector<SimAgent> *agents;
-  RVO::RVOSimulator *sim;
-  std::vector<RVO::vector> agent_goals;
+  // std::vector<SimAgent> *agents;
+  // RVO::RVOSimulator *sim;
+  // std::vector<RVO::vector> agent_goals;
   std::vector<bool> reached_goals;
   double goal_radius;
   double total_sim_time;
-  void change_goal_position(int agent_number,std::vector<RVO::vector> new_goal_pos);
+  // void change_goal_position(int agent_number,std::vector<RVO::vector> new_goal_pos);
   bool reached_goal(int agent_number);
  public:
-  Environment(int num_agents, std::vector<RVO::vector> goal_positions);
+  // Environment(int num_agents, std::vector<RVO::vector> goal_positions);
   void perform_iteration();
   ~Environment();
 };

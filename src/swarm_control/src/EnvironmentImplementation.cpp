@@ -32,9 +32,9 @@ SOFTWARE.
  * @brief The constructor for the 'Environment' class that initializes the simulation and agents (and their goal positions)
  * 
  */
-Environment::Environment(int num_agents, std::vector<RVO::vector> goal_positions){
+// Environment::Environment(int num_agents, std::vector<RVO::vector> goal_positions){
 
-}
+// }
 
 /**
  * @brief A function to change the goal position of a particular agent
@@ -43,9 +43,9 @@ Environment::Environment(int num_agents, std::vector<RVO::vector> goal_positions
  * @param new_goal_pos New goal position of the agent
  * @return * void 
  */
-void Environment::change_goal_position(int agent_number,std::vector<RVO::vector> new_goal_pos){
-  return;
-}
+// void Environment::change_goal_position(int agent_number,std::vector<RVO::vector> new_goal_pos){
+//   return;
+// }
 
 /**
  * @brief A function to check whether the agent reached thir goal or not

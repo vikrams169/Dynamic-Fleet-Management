@@ -14,7 +14,7 @@ target_include_directories(swarm_control_tester PUBLIC
   )
 
 # Any dependent libraires needed to build this target.
-target_link_libraries(swarm_control_tester_tester PUBLIC
+target_link_libraries(swarm_control_tester PUBLIC
   # list of libraries:
   gtest
   swarm_control
