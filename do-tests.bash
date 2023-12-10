@@ -28,7 +28,7 @@ colcon test
 ##############################
 # 3. get return status  (none-zero will cause the script to exit)
 ##############################
-colcon test-result --test-result-base build/my_controller
+colcon test-result --test-result-base build/dynamic_fleet_management
 
 ##############################
 # 4. generate individual coverage reports:
