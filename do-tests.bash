@@ -40,9 +40,9 @@ colcon build \
        --cmake-target "test_coverage" \
        --cmake-arg -DUNIT_TEST_ALREADY_RAN=1
 SWARM_CONTROL_COVERAGE_INFO=./build/swarm_control/test_coverage.info
-## 4.2 my_controller:
-ros2 run my_controller generate_coverage_report.bash
-MY_CONTROLLER_COVERAGE_INFO=./build/dynamic_fleet_management/test_coverage.info
+## 4.2 dynamic_fleet_management:
+ros2 run dynamic_fleet_management generate_coverage_report.bash
+DYNAMIC_FLEET_MANAGEMENT_COVERAGE_INFO=./build/dynamic_fleet_management/test_coverage.info
 
 ##############################
 # 5. Combine coverage reports
@@ -56,7 +56,7 @@ mkdir $COMBINED_TEST_COVERAGE
 ## combine the reports
 ALL_COVERAGE_INFO=./build/test_coverage_merged.info
 lcov -a $SWARM_CONTROL_COVERAGE_INFO -a \
-     $MY_CONTROLLER_COVERAGE_INFO -o \
+     $DYNAMIC_FLEET_MANAGEMENT_COVERAGE_INFO -o \
      $ALL_COVERAGE_INFO
 
 genhtml --output-dir $COMBINED_TEST_COVERAGE $ALL_COVERAGE_INFO

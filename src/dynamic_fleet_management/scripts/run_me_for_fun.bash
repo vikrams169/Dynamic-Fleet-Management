@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# This script should be invoked by "ros2 run my_controller run_me_for_fun.bash" 
+# This script should be invoked by "ros2 run dynamic_fleet_management run_me_for_fun.bash" 
 #
 set -ue -o pipefail
 
