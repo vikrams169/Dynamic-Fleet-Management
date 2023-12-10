@@ -11,6 +11,7 @@ add_executable(swarm_control_tester
 target_include_directories(swarm_control_tester PUBLIC
   # list of include directories:
   ${CMAKE_SOURCE_DIR}/include
+  ${CMAKE_SOURCE_DIR}/libs/RVO2/src> 
   )
 
 # Any dependent libraires needed to build this target.

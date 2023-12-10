@@ -1,6 +1,6 @@
 /**
  * @file SimAgentImplementation.cpp
- * @author Vikram Setty (vikrams@umd.edu)
+ * @author Vikram Setty (vikrams@umd.edu) Vinay Lanka (vlanka@umd.edu)
  * @brief The file that implements stubs (empty function placeholders) for the functions of the 'SimAgent' class
  * @version 0.1
  * @date 2023-12-09

@@ -1,6 +1,6 @@
 /**
  * @file EnvironmentImplementation.cpp
- * @author Vikram Setty (vikrams@umd.edu)
+ * @author Vikram Setty (vikrams@umd.edu) Vinay Lanka (vlanka@umd.edu)
  * @brief The file that implements stubs (empty function placeholders) for the functions of the 'Environment' class
  * @version 0.1
  * @date 2023-12-09
@@ -27,14 +27,15 @@ SOFTWARE.
  * 
  */
 #include "EnvironmentHeader.hpp"
+#include "Vector2.h"
 
 /**
  * @brief The constructor for the 'Environment' class that initializes the simulation and agents (and their goal positions)
  * 
  */
-// Environment::Environment(int num_agents, std::vector<RVO::vector> goal_positions){
+Environment::Environment(int num_agents, std::vector<RVO::Vector2> goal_positions){
 
-// }
+}
 
 /**
  * @brief A function to change the goal position of a particular agent
@@ -43,9 +44,9 @@ SOFTWARE.
  * @param new_goal_pos New goal position of the agent
  * @return * void 
  */
-// void Environment::change_goal_position(int agent_number,std::vector<RVO::vector> new_goal_pos){
-//   return;
-// }
+void Environment::change_goal_position(int agent_number,std::vector<RVO::Vector2> new_goal_pos){
+  return;
+}
 
 /**
  * @brief A function to check whether the agent reached thir goal or not

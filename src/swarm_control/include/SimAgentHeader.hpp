@@ -1,6 +1,6 @@
 /**
  * @file SimAgentHeader.hpp
- * @author Vikram Setty (vikrams@umd.edu)
+ * @author Vikram Setty (vikrams@umd.edu) Vinay Lanka (vlanka@umd.edu)
  * @brief The header that initializes the class that deals with individual agents
  * @version 0.1
  * @date 2023-12-09

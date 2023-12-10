@@ -1,6 +1,6 @@
 /**
  * @file test.cpp
- * @author Vikram Setty (vikrams@umd.edu)
+ * @author Vikram Setty (vikrams@umd.edu) Vinay Lanka (vlanka@umd.edu)
  * @brief The file that contains the tests for the entire library
  * @version 0.1
  * @date 2023-12-09
@@ -27,8 +27,8 @@ SOFTWARE.
  * 
  */
 #include <gtest/gtest.h>
-#include "EnvironmentHeader.hpp"
-#include "SimAgentHeader.hpp"
+// #include "EnvironmentHeader.hpp"
+// #include "SimAgentHeader.hpp"
 
 /**
  * @brief A basic test to check integer equality
