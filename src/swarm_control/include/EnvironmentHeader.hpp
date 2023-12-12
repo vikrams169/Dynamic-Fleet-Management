@@ -1,6 +1,6 @@
 /**
  * @file EnvironmentHeader.hpp
- * @author Vikram Setty (vikrams@umd.edu)
+ * @author Vikram Setty (vikrams@umd.edu) Vinay Lanka (vlanka@umd.edu)
  * @brief The header file that initializes the class that deals with the simulation environments and all the agents together
  * @version 0.1
  * @date 2023-12-09
@@ -27,9 +27,9 @@ SOFTWARE.
  * 
  */
 #include<memory>
-#include<RVO>
-#include<my_dummy_lib_funct2.hpp>
+#include<RVO.h>
 #include<vector>
+#include "SimAgentHeader.hpp"
 
 #pragma once
 
@@ -41,14 +41,14 @@ class Environment {
  private:
   std::vector<SimAgent> *agents;
   RVO::RVOSimulator *sim;
-  std::vector<RVO::vector> agent_goals;
+  std::vector<RVO::Vector2> agent_goals;
   std::vector<bool> reached_goals;
   double goal_radius;
   double total_sim_time;
-  void change_goal_position(int agent_number,std::vector<RVO::vector> new_goal_pos);
+  void change_goal_position(int agent_number,std::vector<RVO::Vector2> new_goal_pos);
   bool reached_goal(int agent_number);
  public:
-  Environment(int num_agents, std::vector<RVO::vector> goal_positions);
+  Environment(int num_agents, std::vector<RVO::Vector2> goal_positions);
   void perform_iteration();
   ~Environment();
 };

@@ -21,22 +21,22 @@ source /opt/ros/humble/setup.bash
 set -u                          # re-enable undefined variable check
 
 ###############################
-# 2. run my_model's "docs" target
+# 2. run swarm_control's "docs" target
 ###############################
 colcon build \
        --event-handlers console_cohesion+ \
-       --packages-select my_model \
+       --packages-select swarm_control \
        --cmake-target "docs"
-##echo "open src/my_model/docs/html/index.html"
+##echo "open src/swarm_control/docs/html/index.html"
 
 ###############################
-# 3. run my_controller's "docs" target
+# 3. run dynamic_fleet_management's "docs" target
 ###############################
 colcon build \
        --event-handlers console_cohesion+ \
-       --packages-select my_controller \
+       --packages-select dynamic_fleet_management \
        --cmake-target "docs"
-##echo "open src/my_controller/docs/html/index.html"
+##echo "open src/dynamic_fleet_management/docs/html/index.html"
 
 ###############################
 # 4. combine all docs
@@ -50,8 +50,8 @@ Welcome to ENPM808X final project page.
 
 Here, you will find all the documentation for this project:
 
-* [my_model](../my_model/docs/html/index.html)
-* [my_controller](../my_controller/docs/html/index.html)
+* [swarm_control](../swarm_control/docs/html/index.html)
+* [dynamic_fleet_management](../dynamic_fleet_management/docs/html/index.html)
 
 Have a nice day.
 EOF

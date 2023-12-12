@@ -20,7 +20,6 @@ execute_process(COMMAND cmake -E create_symlink
 ###################################
 # find dependencies
 ###################################
-find_package(OpenCV REQUIRED)
 find_package(GTest REQUIRED)
 find_package(Doxygen REQUIRED)
 
@@ -132,16 +131,18 @@ add_library (swarm_control
 
 # Specify where the associated include files are
 target_include_directories (swarm_control PUBLIC
-    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>  
-    $<INSTALL_INTERFACE:include> 
-    PUBLIC ${OpenCV_INCLUDE_DIRS}
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/libs/RVO2/src>    
+    $<INSTALL_INTERFACE:libs/RVO2/src>
+    $<INSTALL_INTERFACE:include>
     ) 
 
+add_subdirectory(libs)
 # Specify where the associated libraries are
 # Any dependent libraires needed to build this target.
 target_link_libraries(swarm_control
   # list of libraries
-  ${OpenCV_LIBRARIES}
+  RVO
   )
 
 
@@ -170,6 +171,7 @@ install(FILES
 # Export the export group. CMake will write a configuration file of the current build tree:
 export (TARGETS
   swarm_control
+  RVO
   FILE swarm_control-config.cmake)   # must by <PACKAGE>-config.cmake
 
 # Export build tree to the package registry (~/.cmake/packages/<packag>/)

@@ -1,6 +1,6 @@
 /**
  * @file main.cpp
- * @author Vikram Setty (vikrams@umd.edu)
+ * @author Vikram Setty (vikrams@umd.edu) Vinay Lanka (vlanka@umd.edu)
  * @brief The file that sets uo the Gtest suite for the entire library
  * @version 0.1
  * @date 2023-12-09

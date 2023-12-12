@@ -30,7 +30,7 @@ SOFTWARE.
 #include <gtest/gtest.h>
 #include <stdlib.h>
 
-#include <std_msgs/msg/string.hpp>
+#include <geometry_msgs/msg/twist.hpp>
 
 /**
  * @brief The class that sets up and initializes the ROS 2 tests
@@ -52,7 +52,7 @@ class TaskPlanningFixture : public testing::Test {
      * 1.) Define any ros2 package and exectuable you want to test
      *  example: package name = cpp_pubsub, node name = minimal_publisher, executable = talker
      */
-    bool retVal = StartROSExec ("my_controller", "minimal_publisher", "talker");
+    bool retVal = StartROSExec ("dynamic_fleet_management", "robot_commander", "robot_commander");
     ASSERT_TRUE(retVal);
 
     RCLCPP_INFO_STREAM(node_->get_logger(), "DONE WITH SETUP!!");
@@ -121,14 +121,14 @@ TEST_F(TaskPlanningFixture, TrueIsTrueTest) {
   /*
    * 2.) subscribe to the topic 
    */
-  using std_msgs::msg::String;
-  using SUBSCRIBER = rclcpp::Subscription<String>::SharedPtr;
+  using geometry_msgs::msg::Twist;
+  using SUBSCRIBER = rclcpp::Subscription<geometry_msgs::msg::Twist>::SharedPtr;
   bool hasData = false;
-  SUBSCRIBER subscription = node_->create_subscription<String>
-    ("topic", 10,
+  SUBSCRIBER subscription = node_->create_subscription<geometry_msgs::msg::Twist>
+    ("/cmd_vel", 10,
      // Lambda expression begins
-     [&](const std_msgs::msg::String& msg) {
-       RCLCPP_INFO(node_->get_logger(), "I heard: '%s'", msg.data.c_str());
+     [&](const geometry_msgs::msg::Twist& msg) {
+       RCLCPP_INFO(node_->get_logger(), "I heard: '%f'", msg.linear.x);
        hasData = true;
      } // end of lambda expression
      );

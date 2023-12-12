@@ -5,12 +5,14 @@
   <version>0.0.0</version>
   <description>TODO: Package description</description>
   <maintainer email="vikramsetty169@gmail.com">Vikram Setty</maintainer>
+  <maintainer email="vlanka@umd.edu">Vinay Lanka</maintainer>
   <license>MIT License</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
   <depend>rclcpp</depend>
   <depend>std_msgs</depend>
-  <depend>my_model</depend>     <!--add my_model-->
+  <depend>swarm_control</depend>
+  <depend>geometry_msgs</depend>
 
   <test_depend>ament_cmake_gtest</test_depend>
   <test_depend>ament_lint_auto</test_depend>

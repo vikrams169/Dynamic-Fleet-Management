@@ -28,21 +28,21 @@ colcon test
 ##############################
 # 3. get return status  (none-zero will cause the script to exit)
 ##############################
-colcon test-result --test-result-base build/my_controller
+colcon test-result --test-result-base build/dynamic_fleet_management
 
 ##############################
 # 4. generate individual coverage reports:
 ##############################
-## 4.1 my_model:
+## 4.1 SWARM_CONTROL:
 colcon build \
        --event-handlers console_cohesion+ \
-       --packages-select my_model \
+       --packages-select swarm_control \
        --cmake-target "test_coverage" \
        --cmake-arg -DUNIT_TEST_ALREADY_RAN=1
-MY_MODEL_COVERAGE_INFO=./build/my_model/test_coverage.info
-## 4.2 my_controller:
-ros2 run my_controller generate_coverage_report.bash
-MY_CONTROLLER_COVERAGE_INFO=./build/my_controller/test_coverage.info
+SWARM_CONTROL_COVERAGE_INFO=./build/swarm_control/test_coverage.info
+## 4.2 dynamic_fleet_management:
+ros2 run dynamic_fleet_management generate_coverage_report.bash
+DYNAMIC_FLEET_MANAGEMENT_COVERAGE_INFO=./build/dynamic_fleet_management/test_coverage.info
 
 ##############################
 # 5. Combine coverage reports
@@ -55,8 +55,8 @@ fi
 mkdir $COMBINED_TEST_COVERAGE
 ## combine the reports
 ALL_COVERAGE_INFO=./build/test_coverage_merged.info
-lcov -a $MY_MODEL_COVERAGE_INFO -a \
-     $MY_CONTROLLER_COVERAGE_INFO -o \
+lcov -a $SWARM_CONTROL_COVERAGE_INFO -a \
+     $DYNAMIC_FLEET_MANAGEMENT_COVERAGE_INFO -o \
      $ALL_COVERAGE_INFO
 
 genhtml --output-dir $COMBINED_TEST_COVERAGE $ALL_COVERAGE_INFO
