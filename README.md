@@ -13,17 +13,20 @@ This repo provides a template for setting up:
   - Colcon workspace structure
   - C++ library that depends on other system libraries such as OpenCV.
     - The library is *self-contained and does not depend on ROS.*
+    - In real life, we download source code of third-party modules all
+      the time and often just stick the modules as-is into our colcon
+      workspace.
   - ROS 2 package that depends on a C++ library built in the same colcon workspace
   - Establishing package dependency within the colcon workspace.
-    - ie. the ROS 2 package will never be built first before the dependent C++ library
-  - Multiple subscription within a ROS2 node all listening to the same topic.
+    - ie. the ROS 2 package will not be built before all of its dependent C++ libraries are built first
+  - Multiple subscriptions within a ROS2 node all listening to the same topic.
     - Only one callback function is needed.
     - More efficient than to have N callback functions.
     - More efficient than to have N ROS nodes.
-  - unit test and integration test
+  - Unit test and integration test.
   - Doxygen setup
   - ROS2 launch file
-  - bash scripts so they can be invoked by issuing the "ros2 run ..." command
+  - Bash scripts that can be invoked by the "ros2 run ..." command
   
 ## How to generate package dependency graph
 
@@ -69,14 +72,14 @@ First make sure we have run the unit test already.
 colcon test
 ```
 
-### Test coverage report for "my_controller":
+### Test coverage report for `my_controller`:
 
 ``` bash
 ros2 run my_controller generate_coverage_report.bash
 open build/my_controller/test_coverage/index.html
 ```
 
-### Test coverage report for "my_model":
+### Test coverage report for `my_model`:
 
 ``` bash
 colcon build \
@@ -91,6 +94,11 @@ open build/my_model/test_coverage/index.html
 
 ``` bash
 ./do-tests.bash
+```
+
+## How to generate project documentation
+``` bash
+./do-docs.bash
 ```
 
 ## How to use GitHub CI to upload coverage report to Codecov
