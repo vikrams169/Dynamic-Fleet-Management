@@ -1,10 +1,11 @@
 /**
  * @file EnvironmentHeader.hpp
  * @author Vikram Setty (vikrams@umd.edu) Vinay Lanka (vlanka@umd.edu)
- * @brief The header file that initializes the class that deals with the simulation environments and all the agents together
+ * @brief The header file that initializes the class that deals with the
+simulation environments and all the agents together
  * @version 0.1
  * @date 2023-12-09
- * 
+ *
  * @copyright Copyright (c) 2023 Vikram Setty, Vinay Lanka
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -24,18 +25,21 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
- * 
+ *
  */
-#include<memory>
-#include<RVO.h>
-#include<vector>
+#include <RVO.h>
+
+#include <memory>
+#include <vector>
+
 #include "SimAgentHeader.hpp"
 
 #pragma once
 
 /**
- * @brief The class that manages all the agents and runs iterations of the simulation
- * 
+ * @brief The class that manages all the agents and runs iterations of the
+ * simulation
+ *
  */
 class Environment {
  private:
@@ -45,8 +49,10 @@ class Environment {
   std::vector<bool> reached_goals;
   double goal_radius;
   double total_sim_time;
-  void change_goal_position(int agent_number,std::vector<RVO::Vector2> new_goal_pos);
+  void change_goal_position(int agent_number,
+                            std::vector<RVO::Vector2> new_goal_pos);
   bool reached_goal(int agent_number);
+
  public:
   Environment(int num_agents, std::vector<RVO::Vector2> goal_positions);
   void perform_iteration();

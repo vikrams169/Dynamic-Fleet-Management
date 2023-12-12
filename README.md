@@ -1,112 +1,136 @@
 # Dynamic-Fleet-Management
-A swarm robotics platform that incorporates multi-agent collision avoidance and path-planning capabilities to lead multiple robots to their goal positions in a shared obstacle-ridden environment
 
-[![codecov](https://codecov.io/gh/TommyChangUMD/ENPM808X-final-project-boilerplate/branch/main/graph/badge.svg?token=KRAHD3BZP7)](https://codecov.io/gh/TommyChangUMD/ENPM808X-final-project-boilerplate)
+[![DFM Tests](https://github.com/vikrams169/Dynamic-Fleet-Management/actions/workflows/run-unit-test-and-upload-codecov.yml/badge.svg)](https://github.com/vikrams169/Dynamic-Fleet-Management/actions/workflows/run-unit-test-and-upload-codecov.yml)
+[![codecov](https://codecov.io/gh/vinay-lanka/Human-Detection-and-Localization/graph/badge.svg?token=fQ4Z6RwMFH)](https://codecov.io/gh/vinay-lanka/Human-Detection-and-Localization)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-![CICD Workflow status](https://github.com/TommyChangUMD/ENPM808X-final-project-boilerplate/actions/workflows/run-unit-test-and-upload-codecov.yml/badge.svg)
+**DFM**: A swarm robotics platform that incorporates multi-agent collision avoidance and path-planning capabilities to lead multiple robots to their goal positions in a shared obstacle-ridden environment
 
-This repo provides a template for setting up:
+This repository contains the deliverables for the Endterm Project of **Vikram Setty** (119696897) and **Vinay Lanka** (12041665) as a part of the course *ENPM808X: Software Development for Robotics* at the University of Maryland.
 
-  - GitHub CI
-    - "main" branch runs in a ROS 2 Humble container
-  - Codecov badges
-  - Colcon workspace structure
-  - C++ library that depends on other system libraries such as OpenCV.
-    - The library is *self-contained and does not depend on ROS.*
-    - In real life, we download source code of third-party modules all
-      the time and often just stick the modules as-is into our colcon
-      workspace.
-  - ROS 2 package that depends on a C++ library built in the same colcon workspace
-  - Establishing package dependency within the colcon workspace.
-    - ie. the ROS 2 package will not be built before all of its dependent C++ libraries are built first
-  - Multiple subscriptions within a ROS2 node all listening to the same topic.
-    - Only one callback function is needed.
-    - More efficient than to have N callback functions.
-    - More efficient than to have N ROS nodes.
-  - Unit test and integration test.
-  - Doxygen setup
-  - ROS2 launch file
-  - Bash scripts that can be invoked by the "ros2 run ..." command
-  
-## How to generate package dependency graph
+## Phase 1
 
-``` bash
-colcon graph --dot | dot -Tpng -o depGraph.png
-open depGraph.png
-```
-[<img src=screenshots/depGraph.png
-    width="20%" 
-    style="display: block; margin: 0 auto"
-    />](screenshots/depGraph.png)
+### Project Overview
+We present DFM (Dynamic Fleet Management), a multi-robot swarm management platform for Acme Robotics’ warehouse robot group. This project would give a set of warehouse robots the ability to autonomously navigate to their goal positions in a warehouse setting while avoiding collisions with nearby agents.
 
+DFM works using an RVO 2-based centralized path planner that gives ideal velocities based on specified goal positions and other agents' positions. It does so by using the Reciprocal Collision Avoidance Algorithm, using which it receives a high level of performance.
 
+### About the Authors
+The authors of DFM are Vikram Setty and Vinay Lanka, both robotics graduate students at the University of Maryland.
 
-## How to build and run demo
+Vikram is from Hyderabad, India, and has done his bachelor's and master's degrees with a major in mechanical engineering and a minor in computer science from IIT Ropar. His research interests include perception, navigation, and path planning for robotics and autonomous systems. He is also interested in various areas in artificial intelligence and machine learning, especially computer vision and reinforcement learning.
 
+Vinay is from Hyderabad, India, and has done his bachelor's degree majoring in Electronics and Communication Engineering from VIT Vellore. He has two years of work experience in Robotics, having worked as a Robotics Engineer in Newspace Research and Technologies (Defence Aerospace) and as an R&D Engineer in Neoflux. He's interested in the areas of perception and planning of robots and also shares the common interest of Deep Learning and Computer Vision, especially in the field of Robotics.
+
+### AIP Workflow Used
+This project was developed using the Agile Development Process (AIP) along with pair programming (with a driver and navigator), with a focus on test-driven development (TDD). [This](https://docs.google.com/spreadsheets/d/1S3s_57Yvaj8MZw6J9p7SwZRwz12uO2v6gIpWTRvaI18/edit?usp=sharing) sheet has the product backlog, iteration backlogs, and work log for each task done to develop DFM. The end of each iteration is even tagged to distinguish each sprint. Further, the link to the sprint planning and review meeting notes devised to overview each iteration sprint to develop DFM in the most efficient way possible is attached [here](https://docs.google.com/document/d/1pLAjcp51Vj-sIhFrzhY8Alna1NpD0xXxPJ0TkzX-hBk/edit?usp=sharing).
+
+The latest (Phase 1) developed UML class and activity diagrams can be found in the `UML/initial` directory. Any changes to the UMLs in Phase 2 will be added to a different subdirectory within the `UML/` directory.
+
+A short video providing a brief overview of the project and the details explaining the AIP process used is embedded below. A direct link to the same can also be found [here]().
+
+<!-- [![Video]()]() -->
+
+### Dependencies
+
+#### RVO2
+The main dependency for using DFM is RVO 2 - an algorithm for interactive navigation and planning of large numbers of agents in two-dimensional (crowded) environments. At runtime, each agent senses the environment independently and computes a collision-free motion based on the optimal reciprocal collision avoidance (ORCA) formulation. Our algorithm ensures that each agent exhibits no oscillatory behaviors.
+
+The user specifies static obstacles, agents, and the preferred velocities of the agents. The simulation is performed step-by-step via a simple call to the library. The simulation is fully accessible and manipulable during runtime. 
+
+## Building the code
+
+Run the commands listed below to build the package and libraries.
 ```bash
 rm -rf build/ install/
 colcon build 
 source install/setup.bash
-ros2 launch my_controller run_demo.launch.py
 ```
 
-## How to build for tests (unit test and integration test)
+### Building for Unit and Integration Tests
 
+Further, run these commands to build for running the unit tests and integration tests.
 ```bash
 rm -rf build/ install/
 colcon build --cmake-args -DCOVERAGE=1 
 ```
 
-## How to run tests (unit and integration)
+### Running Unit and Integration
 
+Execute the following commands to run the previosuly built unit and integration tests.
 ```bash
 source install/setup.bash
 colcon test
 ```
 
-## How to generate coverage reports after running colcon test
+### Generating Coverage Reports After Running Colcon Test
 
-First make sure we have run the unit test already.
-
+To obtain the coverage reports (first make sure to have run the unit test already), execute the comands listed below.
 ```bash
 colcon test
 ```
 
-### Test coverage report for `my_controller`:
+### Getting the Test Coverage Report for `dynamic_fleet_management`:
 
+To get the test coverage for the ROS 2 package, *dynamic_fleet_management*, run the commands listed below.
 ``` bash
-ros2 run my_controller generate_coverage_report.bash
-open build/my_controller/test_coverage/index.html
+ros2 run dynamic_fleet_management generate_coverage_report.bash
+open build/dynamic_fleet_management/test_coverage/index.html
 ```
 
-### Test coverage report for `my_model`:
+### Getting the Test Coverage Report for `swarm_control`:
 
+To get the same coverage report as last time, however for the library *swarm_control*, run the commands below.
 ``` bash
 colcon build \
        --event-handlers console_cohesion+ \
-       --packages-select my_model \
+       --packages-select swarm_control \
        --cmake-target "test_coverage" \
        --cmake-arg -DUNIT_TEST_ALREADY_RAN=1
-open build/my_model/test_coverage/index.html
+open build/swarm_control/test_coverage/index.html
 ```
 
-### combined test coverage report
+### Generating the Combined Test Coverage Report
 
+To obtain the combined test coverage report for the package and library, execute the following in the project's package directory.
 ``` bash
 ./do-tests.bash
 ```
 
-## How to generate project documentation
+### Generating the Project Documentation
+
+To get the documentation for the project, run the commands below in the project's package directory.
 ``` bash
 ./do-docs.bash
 ```
 
-## How to use GitHub CI to upload coverage report to Codecov
+### Google Coding Style Verification
+To check how the written code conforms to the Google C++ style guide, look at the `results/cpplint_output.txt` file to see the output on using the *cpplint* tool on this project. You should not be able to see any issues or problems, with all the files processed successfully.
 
-### First, sign up Codecov with you GitHub account.
+This can be self-verified as well by running the following command in the highest-level directory of the project.
+```sh
+# Install cpplint(ignore if already installed):
+  sudo apt install cpplint
+# Navigate to the 'src' directory
+  cd src/
+# Self-check Google code style conformity using Cpplint:
+  cpplint --filter=-build/c++11,+build/c++17,-build/namespaces,-build/include_order swarm_control/src/*.cpp swarm_control/include/*hpp dynamic_fleet_management/src/*.cpp
+```
 
-  https://about.codecov.io/sign-up/
+On running the above command, you should see the same output in the `results/cpplint_output.txt` file.
 
-### Then, follow the similar instruction provided in the cpp-boilerplate-v2 repo
 
-  https://github.com/TommyChangUMD/cpp-boilerplate-v2
+### Static Code Analysis
+To check the static code analysis of this project, check the `results/cppcheck_output.txt` file to see the output on using the *cppcheck* tool. You should not be able to see any issues or problems, with all the files checked successfully.
+
+This can be self-verified as well by running the following command in the highest-level directory of the project.
+```sh
+# Install cppcheck (ignore if already installed):
+  sudo apt install cppcheck
+# Navigate to the 'src' directory
+  cd src/
+# Self-check the static code analysis using Cppcheck:
+  cppcheck --enable=all --std=c++11 --std=c++17 --enable=information --check-config --suppress=missingInclude --suppress=*:*test*/ --suppress=unmatchedSuppression $( find . -name *.cpp | grep -vE -e "^./build/")
+```
+
+On running the above command, you should see the same output in the `results/cppcheck_output.txt` file.

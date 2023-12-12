@@ -4,7 +4,7 @@
  * @brief The file that sets uo the Gtest suite for the entire library
  * @version 0.1
  * @date 2023-12-09
- * 
+ *
  * @copyright Copyright (c) 2023 Vikram Setty, Vinay Lanka
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -24,25 +24,23 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
- * 
+ *
  */
 #include <gtest/gtest.h>
 
 /**
  * @brief A function called in case a function is not used
- * 
- * @return * void 
+ *
+ * @return * void
  */
-void function_not_used() {
-  int notUsed = 3;
-}
+void function_not_used() { int notUsed = 3; }
 
 /**
  * @brief Setting up the Gtest suite
- * 
- * @param argc 
- * @param argv 
- * @return * int 
+ *
+ * @param argc
+ * @param argv
+ * @return * int
  */
 int main(int argc, char** argv) {
   ::testing::InitGoogleTest(&argc, argv);

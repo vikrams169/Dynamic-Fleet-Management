@@ -1,10 +1,11 @@
 /**
  * @file SimAgentHeader.hpp
  * @author Vikram Setty (vikrams@umd.edu) Vinay Lanka (vlanka@umd.edu)
- * @brief The header that initializes the class that deals with individual agents
+ * @brief The header that initializes the class that deals with individual
+agents
  * @version 0.1
  * @date 2023-12-09
- * 
+ *
  * @copyright Copyright (c) 2023 Vikram Setty, Vinay Lanka
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -24,21 +25,23 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
- * 
+ *
  */
-#include<memory>
-#include<vector>
+#include <memory>
+#include <vector>
 
 #pragma once
 
 /**
- * @brief The class that maintains and updates a single agent's position and velocity
- * 
+ * @brief The class that maintains and updates a single agent's position and
+ * velocity
+ *
  */
 class SimAgent {
  private:
   std::vector<double> position;
   std::vector<double> velocity;
+
  public:
   SimAgent(std::vector<double> initial_pos, std::vector<double> initial_vel);
   void move_agent(std::vector<double> new_vel);

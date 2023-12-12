@@ -30,20 +30,21 @@ SOFTWARE.
 
 #include <chrono>
 #include <functional>
+#include <geometry_msgs/msg/twist.hpp>
 #include <memory>
 #include <string>
 
 #include "EnvironmentHeader.hpp"
 #include "SimAgentHeader.hpp"
 #include "rclcpp/rclcpp.hpp"
-#include <geometry_msgs/msg/twist.hpp>
 
 using namespace std::chrono_literals;
 
 class RobotCommandPublisher : public rclcpp::Node {
  public:
   RobotCommandPublisher() : Node("robot_commander") {
-    velocity_pub = this->create_publisher<geometry_msgs::msg::Twist>("/cmd_vel", 10);
+    velocity_pub =
+        this->create_publisher<geometry_msgs::msg::Twist>("/cmd_vel", 10);
     timer = this->create_wall_timer(
         500ms, std::bind(&RobotCommandPublisher::timer_callback, this));
   }
@@ -53,7 +54,7 @@ class RobotCommandPublisher : public rclcpp::Node {
     auto velocity_msg = geometry_msgs::msg::Twist();
     velocity_msg.linear.x = 0.01;
     velocity_msg.angular.z = 0.01;
-    velocity_pub->publish(velocity_msg);;
+    velocity_pub->publish(velocity_msg);
   }
   rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr velocity_pub;
   rclcpp::TimerBase::SharedPtr timer;
