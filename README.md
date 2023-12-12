@@ -4,7 +4,7 @@
 [![codecov](https://codecov.io/gh/vikrams169/Dynamic-Fleet-Management/graph/badge.svg?token=DNDF5KKAKK)](https://codecov.io/gh/vikrams169/Dynamic-Fleet-Management)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-**DFM**: A swarm robotics platform that incorporates multi-agent collision avoidance and path-planning capabilities to lead multiple robots to tFheir goal positions in a shared obstacle-ridden environment
+**DFM**: A swarm robotics platform that incorporates multi-agent collision avoidance and path-planning capabilities to lead multiple robots to their goal positions in a shared obstacle-ridden environment
 
 This repository contains the deliverables for the Endterm Project of **Vikram Setty** (119696897) and **Vinay Lanka** (12041665) as a part of the course *ENPM808X: Software Development for Robotics* at the University of Maryland.
 
@@ -37,6 +37,8 @@ A short video providing a brief overview of the project and the details explaini
 The main dependency for using DFM is RVO 2 - an algorithm for interactive navigation and planning of large numbers of agents in two-dimensional (crowded) environments. At runtime, each agent senses the environment independently and computes a collision-free motion based on the optimal reciprocal collision avoidance (ORCA) formulation. Our algorithm ensures that each agent exhibits no oscillatory behaviors.
 
 The user specifies static obstacles, agents, and the preferred velocities of the agents. The simulation is performed step-by-step via a simple call to the library. The simulation is fully accessible and manipulable during runtime. 
+
+A link to the library can be found [here](https://gamma.cs.unc.edu/RVO2/documentation/2.0/index.html).
 
 ## Building the code
 
