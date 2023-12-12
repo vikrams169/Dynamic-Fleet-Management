@@ -4,7 +4,7 @@
  * @brief The file that contains the tests for the entire library
  * @version 0.1
  * @date 2023-12-09
- * 
+ *
  * @copyright Copyright (c) 2023 Vikram Setty, Vinay Lanka
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -24,7 +24,7 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
- * 
+ *
  */
 #include <gtest/gtest.h>
 // #include "EnvironmentHeader.hpp"
@@ -32,24 +32,18 @@ SOFTWARE.
 
 /**
  * @brief A basic test to check integer equality
- * 
+ *
  */
-TEST(Test1, Case1) {
-  EXPECT_EQ(1, 1);
-}
+TEST(Test1, Case1) { EXPECT_EQ(1, 1); }
 
 /**
  * @brief A basic test to check numerical approximation
- * 
+ *
  */
-TEST(Test1, Case2) {
-  ASSERT_NEAR(1, 1.01, 0.1);
-}
+TEST(Test1, Case2) { ASSERT_NEAR(1, 1.01, 0.1); }
 
 /**
  * @brief A basic test to check string equality
- * 
+ *
  */
-TEST(Test1, Case3) {
-  EXPECT_STREQ("GoTerps", "GoTerps");
-}
+TEST(Test1, Case3) { EXPECT_STREQ("GoTerps", "GoTerps"); }
