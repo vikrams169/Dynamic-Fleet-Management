@@ -31,7 +31,11 @@ SOFTWARE.
 #include "EnvironmentHeader.hpp"
 #include "SimAgentHeader.hpp"
 
-*@brief A basic test to check integer equality ** / TEST(Test1, Case1) {
+/**
+ * @brief A basic test to check integer equality
+ * 
+ */
+TEST(Test1, Case1) {
   EXPECT_EQ(1, 1);
 }
 

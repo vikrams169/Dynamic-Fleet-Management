@@ -38,6 +38,8 @@ The main dependency for using DFM is RVO 2 - an algorithm for interactive naviga
 
 The user specifies static obstacles, agents, and the preferred velocities of the agents. The simulation is performed step-by-step via a simple call to the library. The simulation is fully accessible and manipulable during runtime. 
 
+A link to the library can be found [here](https://gamma.cs.unc.edu/RVO2/documentation/2.0/index.html).
+
 ## Building the code
 
 Run the commands listed below to build the package and libraries.

@@ -64,7 +64,13 @@ bool Environment::reached_goal(int agent_number) { return true; }
  *
  * @return * void
  */
-void Environment::perform_iteration() { return; }
+void Environment::perform_iteration() { 
+  int agent_number = 0;
+  std::vector<RVO::Vector2> new_goal_pos = {RVO::Vector2(-50.0f, -50.0f)};
+  if(reached_goal(agent_number)){
+    change_goal_position(agent_number, new_goal_pos);
+  }
+}
 
 /**
  * @brief The destructor of the Environment class that deallocates all
