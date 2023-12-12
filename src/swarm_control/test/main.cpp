@@ -33,7 +33,6 @@ SOFTWARE.
  *
  * @return * void
  */
-void function_not_used() { int notUsed = 3; }
 
 /**
  * @brief Setting up the Gtest suite

@@ -4,7 +4,7 @@
 [![codecov](https://codecov.io/gh/vikrams169/Dynamic-Fleet-Management/graph/badge.svg?token=DNDF5KKAKK)](https://codecov.io/gh/vikrams169/Dynamic-Fleet-Management)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-**DFM**: A swarm robotics platform that incorporates multi-agent collision avoidance and path-planning capabilities to lead multiple robots to tFheir goal positions in a shared obstacle-ridden environment
+**DFM**: A swarm robotics platform that incorporates multi-agent collision avoidance and path-planning capabilities to lead multiple robots to their goal positions in a shared obstacle-ridden environment
 
 This repository contains the deliverables for the Endterm Project of **Vikram Setty** (119696897) and **Vinay Lanka** (12041665) as a part of the course *ENPM808X: Software Development for Robotics* at the University of Maryland.
 
