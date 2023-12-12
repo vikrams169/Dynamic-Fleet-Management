@@ -1,6 +1,6 @@
 # Dynamic-Fleet-Management
 
-[![DFM Tests](https://github.com/vikrams169/Dynamic-Fleet-Management/blob/main/.github/workflows/run-unit-test-and-upload-codecov.yml/badge.svg)](https://github.com/vikrams169/Dynamic-Fleet-Management/blob/main/.github/workflows/run-unit-test-and-upload-codecov.yml)
+[![DFM Tests](https://github.com/vikrams169/Dynamic-Fleet-Management/actions/workflows/run-unit-test-and-upload-codecov.yml/badge.svg)](https://github.com/vikrams169/Dynamic-Fleet-Management/actions/workflows/run-unit-test-and-upload-codecov.yml)
 [![codecov](https://codecov.io/gh/vinay-lanka/Human-Detection-and-Localization/graph/badge.svg?token=fQ4Z6RwMFH)](https://codecov.io/gh/vinay-lanka/Human-Detection-and-Localization)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
@@ -29,11 +29,14 @@ The latest (Phase 1) developed UML class and activity diagrams can be found in t
 
 A short video providing a brief overview of the project and the details explaining the AIP process used is embedded below. A direct link to the same can also be found [here]().
 
-[![Video]()](https://www.youtube.com/watch?v=6D_xVzv4fGo)
+<!-- [![Video]()]() -->
 
-### Installing the Dependencies
+### Dependencies
 
-This project requires a ROS 2 Humble distribution (ideally on an Ubuntu 22.04 system) to be built and executed. To install the ROS 2 dependencies, run the command below. The main dependency for using DFM is RVO 2 which can be installed as per the instructions below.
+#### RVO2
+The main dependency for using DFM is RVO 2 - an algorithm for interactive navigation and planning of large numbers of agents in two-dimensional (crowded) environments. At runtime, each agent senses the environment independently and computes a collision-free motion based on the optimal reciprocal collision avoidance (ORCA) formulation. Our algorithm ensures that each agent exhibits no oscillatory behaviors.
+
+The user specifies static obstacles, agents, and the preferred velocities of the agents. The simulation is performed step-by-step via a simple call to the library. The simulation is fully accessible and manipulable during runtime. 
 
 ## Building the code
 
@@ -89,14 +92,14 @@ open build/swarm_control/test_coverage/index.html
 
 ### Generating the Combined Test Coverage Report
 
-To obtain the combined test coverage report for the package and library, execute the following.
+To obtain the combined test coverage report for the package and library, execute the following in the project's package directory.
 ``` bash
 ./do-tests.bash
 ```
 
 ### Generating the Project Documentation
 
-To get the documentation for the project, run the commands below.
+To get the documentation for the project, run the commands below in the project's package directory.
 ``` bash
 ./do-docs.bash
 ```
