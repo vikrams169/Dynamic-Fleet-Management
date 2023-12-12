@@ -1,10 +1,10 @@
 # Dynamic-Fleet-Management
 
 [![DFM Tests](https://github.com/vikrams169/Dynamic-Fleet-Management/actions/workflows/run-unit-test-and-upload-codecov.yml/badge.svg)](https://github.com/vikrams169/Dynamic-Fleet-Management/actions/workflows/run-unit-test-and-upload-codecov.yml)
-[![codecov](https://codecov.io/gh/vinay-lanka/Human-Detection-and-Localization/graph/badge.svg?token=fQ4Z6RwMFH)](https://codecov.io/gh/vinay-lanka/Human-Detection-and-Localization)
+[![codecov](https://codecov.io/gh/vikrams169/Dynamic-Fleet-Management/graph/badge.svg?token=DNDF5KKAKK)](https://codecov.io/gh/vikrams169/Dynamic-Fleet-Management)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-**DFM**: A swarm robotics platform that incorporates multi-agent collision avoidance and path-planning capabilities to lead multiple robots to their goal positions in a shared obstacle-ridden environment
+**DFM**: A swarm robotics platform that incorporates multi-agent collision avoidance and path-planning capabilities to lead multiple robots to tFheir goal positions in a shared obstacle-ridden environment
 
 This repository contains the deliverables for the Endterm Project of **Vikram Setty** (119696897) and **Vinay Lanka** (12041665) as a part of the course *ENPM808X: Software Development for Robotics* at the University of Maryland.
 
