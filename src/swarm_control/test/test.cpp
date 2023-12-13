@@ -33,11 +33,9 @@ SOFTWARE.
 
 /**
  * @brief A basic test to check integer equality
- * 
+ *
  */
-TEST(Test1, Case1) {
-  EXPECT_EQ(1, 1);
-}
+TEST(Test1, Case1) { EXPECT_EQ(1, 1); }
 
 /**
  * @brief A basic test to check numerical approximation
