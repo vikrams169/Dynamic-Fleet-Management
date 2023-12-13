@@ -27,9 +27,9 @@ This project was developed using the Agile Development Process (AIP) along with 
 
 The latest (Phase 1) developed UML class and activity diagrams can be found in the `UML/initial` directory. Any changes to the UMLs in Phase 2 will be added to a different subdirectory within the `UML/` directory.
 
-A short video providing a brief overview of the project and the details explaining the AIP process used is embedded below. A direct link to the same can also be found [here]().
+A short video providing a brief overview of the project and the details explaining the AIP process used is embedded below. A direct link to the same can also be found [here](https://i3.ytimg.com/vi/DN5dJNnc8Vk/maxresdefault.jpg).
 
-<!-- [![Video]()]() -->
+[![Video](https://i3.ytimg.com/vi/DN5dJNnc8Vk/maxresdefault.jpg)](https://www.youtube.com/watch?v=DN5dJNnc8Vk)
 
 ### Dependencies
 
