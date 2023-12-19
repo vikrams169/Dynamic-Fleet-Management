@@ -28,14 +28,17 @@ SOFTWARE.
  *
  */
 #include <SimAgentHeader.hpp>
-
 /**
  * @brief The constructor for the 'SimAgent' class that initializes the agent's
  * position and velocity
  *
  */
-SimAgent::SimAgent(std::vector<double> initial_pos,
-                   std::vector<double> initial_vel) {}
+SimAgent::SimAgent(std::vector<double> initial_pos, std::vector<double> initial_vel) {
+    position[0] = initial_pos[0];
+    position[1] = initial_pos[1];
+    heading = initial_pos[2];
+    velocity = initial_vel;
+}
 
 /**
  * @brief The function that updates the agent's position and velocity based on
@@ -45,7 +48,30 @@ SimAgent::SimAgent(std::vector<double> initial_pos,
  * planner
  * @return * void
  */
-void SimAgent::move_agent(std::vector<double> new_vel) { return; }
+void SimAgent::update_agent(std::vector<double> current_pos, std::vector<double> current_vel) { 
+    position[0] = current_pos[0];
+    position[1] = current_pos[1];
+    heading = current_pos[2];
+    velocity[0] = current_vel[0];
+    velocity[1] = current_vel[1];
+    // velocity[0] = std::sqrt(std::pow(current_vel[0],2)+std::pow(current_vel[1],2));
+    // velocity[1] = std::atan2(current_vel[1],current_vel[0]);
+}
+
+void SimAgent::update_desired_vel(std::vector<double> desired_vel){
+    desired_velocity = desired_vel;
+}
+void SimAgent::update_desired_pos(std::vector<double> desired_pos){
+    desired_position = desired_pos;
+}
+
+std::vector<double> SimAgent::getSimAgentDesiredVelocity() { 
+    return desired_velocity;
+}
+
+std::vector<double> SimAgent::getSimAgentDesiredPosition() { 
+    return desired_position;
+}
 
 /**
  * @brief The destructor for the 'SimAgent' class that deallocates all the
