@@ -52,11 +52,6 @@ TEST(BasicTest1, Case3) { EXPECT_STREQ("GoTerps", "GoTerps"); }
 const int NO_OF_AGENTS = 2;
 float timestep_val = 0.1;
 std::vector<RVO::Vector2> AGENT_GOALS;
-RVO::Vector2 temp;
-temp.x = 0;
-temp.y = 0;
-AGENT_GOALS.push_back(temp);
-AGENT_GOALS.push_back(temp);
 std::vector<std::vector<double>> current_pos{{0, 0}, {0, 0}};
 std::vector<std::vector<double>> current_vel{{0, 0}, {0, 0}};
 
