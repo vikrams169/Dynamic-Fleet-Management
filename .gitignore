@@ -2,4 +2,6 @@
 /install
 /log
 /.cache
+/src/dynamic_fleet_management/.cache
+/src/swarm_control/.cache
 compile_commands.json
