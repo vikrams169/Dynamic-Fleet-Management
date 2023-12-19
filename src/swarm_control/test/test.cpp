@@ -88,11 +88,11 @@ TEST_F(EnvironmentTests, test_perform_iteration) {
       testEnvironment->getSimAgentDesiredPositions();
 }
 
-std::vector<double> initial_pos{0, 0};
-std::vector<double> initial_vel{0, 0};
-std::vector<double> new_vel{0, 0};
-std::vector<double> des_vel{0, 0};
-std::vector<double> des_pos{0, 0};
+std::vector<double> initial_pos;
+std::vector<double> initial_vel;
+std::vector<double> new_vel;
+std::vector<double> des_vel;
+std::vector<double> des_pos;
 
 // /**
 //  * @brief Text fixture class for testing the SimAgent class.
