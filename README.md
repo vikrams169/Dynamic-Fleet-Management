@@ -15,6 +15,10 @@ We present DFM (Dynamic Fleet Management), a multi-robot swarm management platfo
 
 DFM works using an RVO 2-based centralized path planner that gives ideal velocities based on specified goal positions and other agents' positions. It does so by using the Reciprocal Collision Avoidance Algorithm, using which it receives a high level of performance.
 
+This project contains a demonstration to run a Gazebo simulation where four Turtlebot3 Waffle Pi robots reach their goal positions by solving a deadlocked state (where the motion of each robot depedns on the motion of other robots leading to an infitely stationary period). The video showing a run of this demonstration is attached below
+
+[![Video](https://github.com/vikrams169/Dynamic-Fleet-Management/tree/main/images/deadlock_prevention.jpg)](https://drive.google.com/file/d/106vmVoiUW7vUvUSkB2EyfJ89jl8wBam7/view?usp=sharing)
+
 ### About the Authors
 The authors of DFM are Vikram Setty and Vinay Lanka, both robotics graduate students at the University of Maryland.
 
@@ -27,9 +31,9 @@ This project was developed using the Agile Development Process (AIP) along with 
 
 The latest (Phase 2) developed UML class and activity diagrams can be found in the `UML/revised` directory. Earlier made UMLs can be founf in the `UML/initial` directory. Further, the proposal for this project can be found in the `proposal` directory.
 
-A short video providing a brief overview of the project and the details explaining the AIP process used is embedded below. A direct link to the same can also be found [here](https://i3.ytimg.com/vi/DN5dJNnc8Vk/maxresdefault.jpg).
+A short video providing a brief overview of the project and the details explaining the AIP process used is embedded below. A direct link to the same can also be found [here]().
 
-[![Video](https://i3.ytimg.com/vi/DN5dJNnc8Vk/maxresdefault.jpg)](https://www.youtube.com/watch?v=DN5dJNnc8Vk)
+<!--- [![Video]()]() --->
 
 ### Dependencies
 
@@ -57,7 +61,20 @@ rm -rf build/ install/
 colcon build --cmake-args -DCOVERAGE=1 
 ```
 
-### Running Unit and Integration
+### Running the Demo
+
+To run the demo example of four Turtlebot 3 Waffle Pis solving a deadlock, run the commands below to spawn the robots in Gazebo.
+```bash
+source install/setup.bash
+ros2 launch dynamic_fleet_management gazebo.launch.py 
+```
+In another terminal tab/window, run the following to start the solver node and simulation.
+```bash
+source install/setup.bash
+ros2 run dynamic_fleet_management robot_commander 
+```
+
+### Running the Unit and Integration Tests
 
 Execute the following commands to run the previosuly built unit and integration tests.
 ```bash
