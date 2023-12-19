@@ -53,8 +53,12 @@ class Environment {
   //                           std::vector<RVO::Vector2> new_goal_pos);
   // bool reached_goal(int agent_number);
  public:
-  Environment(int num_agents, float timestep, std::vector<std::vector<double>> start_positions, std::vector<RVO::Vector2> goal_positions);
-  void update_environment(int num_agents, std::vector<std::vector<double>> current_positions, std::vector<std::vector<double>> current_velocities);
+  Environment(int num_agents, float timestep,
+              std::vector<std::vector<double>> start_positions,
+              std::vector<RVO::Vector2> goal_positions);
+  void update_environment(int num_agents,
+                          std::vector<std::vector<double>> current_positions,
+                          std::vector<std::vector<double>> current_velocities);
   void perform_iteration();
   std::vector<std::vector<double>> getSimAgentDesiredVelocities();
   std::vector<std::vector<double>> getSimAgentDesiredPositions();
