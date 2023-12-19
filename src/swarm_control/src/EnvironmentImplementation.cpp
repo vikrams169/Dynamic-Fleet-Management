@@ -49,7 +49,7 @@ Environment::Environment(int num_agents, float timestep,
   // Set time step
   sim->setTimeStep(timestep);
   // Specify default parameters for agents that are subsequently added.
-  sim->setAgentDefaults(15.0f, 10, 10.0f, 5.0f, 2.0f, 2.0f);
+  sim->setAgentDefaults(5.0f, 5, 10.0f, 5.0f, 0.5f, 2.0f);
   for (int i = 0; i < num_agents; i++) {
     RVO::Vector2 startPositon = {static_cast<float>(start_positions[i][0]),
                                  static_cast<float>(start_positions[i][1])};

@@ -128,7 +128,7 @@ class RobotCommandPublisher : public rclcpp::Node {
     robot_3_pose = extract_pose(msg);
   }
   void robot4_odom_callback(nav_msgs::msg::Odometry::SharedPtr msg) {
-    robot_3_pose = extract_pose(msg);
+    robot_4_pose = extract_pose(msg);
   }
 
   // Publisher Callback
@@ -136,6 +136,7 @@ class RobotCommandPublisher : public rclcpp::Node {
     std::vector<std::vector<double>> robot_poses{robot_1_pose, robot_2_pose,
                                                  robot_3_pose, robot_4_pose};
     if (!iteration_complete) {
+      RCLCPP_INFO_STREAM(this->get_logger(), "New iteration");
       testenv->perform_iteration();
       iteration_complete = !iteration_complete;
       orientation_complete = false;
@@ -153,12 +154,13 @@ class RobotCommandPublisher : public rclcpp::Node {
     auto velocity_msg_robot2 = geometry_msgs::msg::Twist();
     auto velocity_msg_robot3 = geometry_msgs::msg::Twist();
     auto velocity_msg_robot4 = geometry_msgs::msg::Twist();
+
     if (abs(desired_headings[0] - robot_poses[0][2]) > 0.05) {
       velocity_msg_robot1.linear.x = 0.0;
       if (desired_headings[0] - robot_poses[0][2] > 0) {
-        velocity_msg_robot1.angular.z = 0.1;
+        velocity_msg_robot1.angular.z = 0.05;
       } else {
-        velocity_msg_robot1.angular.z = -0.1;
+        velocity_msg_robot1.angular.z = -0.05;
       }
       velocity_pub_robot1->publish(velocity_msg_robot1);
     } else {
@@ -169,9 +171,9 @@ class RobotCommandPublisher : public rclcpp::Node {
     if (abs(desired_headings[1] - robot_poses[1][2]) > 0.05) {
       velocity_msg_robot2.linear.x = 0.0;
       if (desired_headings[1] - robot_poses[1][2] > 0) {
-        velocity_msg_robot2.angular.z = 0.1;
+        velocity_msg_robot2.angular.z = 0.05;
       } else {
-        velocity_msg_robot2.angular.z = -0.1;
+        velocity_msg_robot2.angular.z = -0.05;
       }
       velocity_pub_robot2->publish(velocity_msg_robot2);
     } else {
@@ -183,9 +185,9 @@ class RobotCommandPublisher : public rclcpp::Node {
     if (abs(desired_headings[2] - robot_poses[2][2]) > 0.05) {
       velocity_msg_robot3.linear.x = 0.0;
       if (desired_headings[2] - robot_poses[2][2] > 0) {
-        velocity_msg_robot3.angular.z = 0.1;
+        velocity_msg_robot3.angular.z = 0.05;
       } else {
-        velocity_msg_robot3.angular.z = -0.1;
+        velocity_msg_robot3.angular.z = -0.05;
       }
       velocity_pub_robot3->publish(velocity_msg_robot3);
     } else {
@@ -196,9 +198,9 @@ class RobotCommandPublisher : public rclcpp::Node {
     if (abs(desired_headings[3] - robot_poses[3][2]) > 0.05) {
       velocity_msg_robot4.linear.x = 0.0;
       if (desired_headings[3] - robot_poses[3][2] > 0) {
-        velocity_msg_robot4.angular.z = 0.1;
+        velocity_msg_robot4.angular.z = 0.05;
       } else {
-        velocity_msg_robot4.angular.z = -0.1;
+        velocity_msg_robot4.angular.z = -0.05;
       }
       velocity_pub_robot4->publish(velocity_msg_robot4);
     } else {
