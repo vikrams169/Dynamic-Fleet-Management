@@ -47,7 +47,6 @@ class SimAgent {
 
  public:
   SimAgent(std::vector<double> initial_pos, std::vector<double> initial_vel);
-  void update_vel(std::vector<double> vel);
   void update_desired_vel(std::vector<double> desired_vel);
   void update_desired_pos(std::vector<double> desired_pos);
   void update_agent(std::vector<double> current_pos,

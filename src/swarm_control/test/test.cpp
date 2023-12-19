@@ -52,8 +52,13 @@ TEST(BasicTest1, Case3) { EXPECT_STREQ("GoTerps", "GoTerps"); }
 const int NO_OF_AGENTS = 2;
 float timestep_val = 0.1;
 std::vector<RVO::Vector2> AGENT_GOALS;
-std::vector<std::vector<double>> current_pos;
-std::vector<std::vector<double>> current_vel;
+RVO::Vector2 temp;
+temp.x = 0;
+temp.y = 0;
+AGENT_GOALS.push_back(temp);
+AGENT_GOALS.push_back(temp);
+std::vector<std::vector<double>> current_pos{{0, 0}, {0, 0}};
+std::vector<std::vector<double>> current_vel{{0, 0}, {0, 0}};
 
 /**
  * @brief Text fixture class for testing the Environment class.
@@ -88,11 +93,10 @@ TEST_F(EnvironmentTests, test_perform_iteration) {
       testEnvironment->getSimAgentDesiredPositions();
 }
 
-std::vector<double> initial_pos;
-std::vector<double> initial_vel;
-std::vector<double> new_vel;
-std::vector<double> des_vel;
-std::vector<double> des_pos;
+std::vector<double> initial_pos{0, 0};
+std::vector<double> initial_vel{0, 0};
+std::vector<double> des_vel{0, 0};
+std::vector<double> des_pos{0, 0};
 
 // /**
 //  * @brief Text fixture class for testing the SimAgent class.
@@ -118,7 +122,6 @@ class SimAgentTests : public testing::Test {
 //  *
 //  */
 TEST_F(SimAgentTests, test_perform_iteration) {
-  testSimAgent->update_vel(new_vel);
   testSimAgent->update_desired_vel(des_vel);
   testSimAgent->update_desired_pos(des_pos);
   testSimAgent->update_agent(initial_pos, initial_vel);
