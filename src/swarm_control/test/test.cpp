@@ -91,6 +91,7 @@ TEST_F(EnvironmentTests, test_perform_iteration) {
 std::vector<double> initial_pos = {0, 0};
 std::vector<double> initial_vel = {0, 0};
 std::vector<double> new_vel = {0, 0};
+std::vector<double> des_vel = {0, 0};
 std::vector<double> des_pos = {0, 0};
 
 // /**
@@ -118,7 +119,7 @@ class SimAgentTests : public testing::Test {
 //  */
 TEST_F(SimAgentTests, test_perform_iteration) {
   testSimAgent->update_vel(new_vel);
-  testSimAgent->update_desired_vel(new_vel);
+  testSimAgent->update_desired_vel(des_vel);
   testSimAgent->update_desired_pos(des_pos);
   testSimAgent->update_agent(initial_pos, initial_vel);
   std::vector<double> v1 = testSimAgent->getSimAgentDesiredVelocity();

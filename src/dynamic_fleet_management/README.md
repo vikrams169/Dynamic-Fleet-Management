@@ -1,4 +1,4 @@
-# `my_controller`
+# `dynamic_fleet_management`
 
 Here's a simple ROS2 package that demonstrates how integration test
 (aka level 2 unit test) can be done using GoogleTest.
@@ -18,7 +18,7 @@ This ROS2 package depends on the `my_model` module.  This dependency
 is specified in the package's `package.xml` file:
 
 ```
-  <depend>my_model</depend>
+  <depend>swarm_control</depend>
 ```
 
 Alternatively, we could also specify the dependency by creating a
@@ -29,9 +29,9 @@ Otherwise the package will not show up in the list of ROS2 packages
 
 ```
 {
-    "name": "my_controller",
+    "name": "dynamic_fleet_management",
     "type": "cmake",
-    "dependencies" : ["my_model"]
+    "dependencies" : ["swarm_control"]
 }
 ```
 

@@ -1,12 +1,10 @@
-# `my_model`
+# `swarm_control`
 
 ## Overview
 
 A stand-alone C++ library using:
 
-- CMake
-- GoogleTest
-- OpenCV
+- RVO 2
 
 
 ## Standard install via command-line

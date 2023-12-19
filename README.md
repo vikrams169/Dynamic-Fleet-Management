@@ -8,7 +8,7 @@
 
 This repository contains the deliverables for the Endterm Project of **Vikram Setty** (119696897) and **Vinay Lanka** (12041665) as a part of the course *ENPM808X: Software Development for Robotics* at the University of Maryland.
 
-## Phase 1
+## Phase 2
 
 ### Project Overview
 We present DFM (Dynamic Fleet Management), a multi-robot swarm management platform for Acme Robotics’ warehouse robot group. This project would give a set of warehouse robots the ability to autonomously navigate to their goal positions in a warehouse setting while avoiding collisions with nearby agents.
@@ -25,7 +25,7 @@ Vinay is from Hyderabad, India, and has done his bachelor's degree majoring in E
 ### AIP Workflow Used
 This project was developed using the Agile Development Process (AIP) along with pair programming (with a driver and navigator), with a focus on test-driven development (TDD). [This](https://docs.google.com/spreadsheets/d/1S3s_57Yvaj8MZw6J9p7SwZRwz12uO2v6gIpWTRvaI18/edit?usp=sharing) sheet has the product backlog, iteration backlogs, and work log for each task done to develop DFM. The end of each iteration is even tagged to distinguish each sprint. Further, the link to the sprint planning and review meeting notes devised to overview each iteration sprint to develop DFM in the most efficient way possible is attached [here](https://docs.google.com/document/d/1pLAjcp51Vj-sIhFrzhY8Alna1NpD0xXxPJ0TkzX-hBk/edit?usp=sharing).
 
-The latest (Phase 1) developed UML class and activity diagrams can be found in the `UML/initial` directory. Any changes to the UMLs in Phase 2 will be added to a different subdirectory within the `UML/` directory.
+The latest (Phase 2) developed UML class and activity diagrams can be found in the `UML/revised` directory. Earlier made UMLs can be founf in the `UML/initial` directory. Further, the proposal for this project can be found in the `proposal` directory.
 
 A short video providing a brief overview of the project and the details explaining the AIP process used is embedded below. A direct link to the same can also be found [here](https://i3.ytimg.com/vi/DN5dJNnc8Vk/maxresdefault.jpg).
 
