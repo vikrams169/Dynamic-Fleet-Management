@@ -30,6 +30,7 @@ SOFTWARE.
 #include <stdlib.h>
 
 #include <geometry_msgs/msg/twist.hpp>
+#include <nav_msgs/msg/odometry.hpp>
 #include <rclcpp/rclcpp.hpp>
 
 /**
@@ -114,6 +115,10 @@ class TaskPlanningFixture : public testing::Test {
   }
 };
 
+/**
+ * @brief Construct a new test f object for testing out command velocity
+ * 
+ */
 TEST_F(TaskPlanningFixture, Robot1CmdVel) {
   std::cout << "TEST BEGINNING!!" << std::endl;
   EXPECT_TRUE(true);
@@ -152,6 +157,10 @@ TEST_F(TaskPlanningFixture, Robot1CmdVel) {
   EXPECT_TRUE(hasData);
 }
 
+/**
+ * @brief Construct a new test f object for testing out command velocity
+ * 
+ */
 TEST_F(TaskPlanningFixture, Robot2CmdVel) {
   std::cout << "TEST BEGINNING!!" << std::endl;
   EXPECT_TRUE(true);
@@ -190,6 +199,10 @@ TEST_F(TaskPlanningFixture, Robot2CmdVel) {
   EXPECT_TRUE(hasData);
 }
 
+/**
+ * @brief Construct a new test f object for testing out command velocity
+ * 
+ */
 TEST_F(TaskPlanningFixture, Robot3CmdVel) {
   std::cout << "TEST BEGINNING!!" << std::endl;
   EXPECT_TRUE(true);
@@ -228,6 +241,10 @@ TEST_F(TaskPlanningFixture, Robot3CmdVel) {
   EXPECT_TRUE(hasData);
 }
 
+/**
+ * @brief Construct a new test f object for testing out command velocity
+ * 
+ */
 TEST_F(TaskPlanningFixture, Robot4CmdVel) {
   std::cout << "TEST BEGINNING!!" << std::endl;
   EXPECT_TRUE(true);
@@ -265,6 +282,208 @@ TEST_F(TaskPlanningFixture, Robot4CmdVel) {
   }
   EXPECT_TRUE(hasData);
 }
+
+using namespace std::chrono_literals;
+/**
+ * @brief Construct a new test f object for subscription
+ * 
+ */
+TEST_F(TaskPlanningFixture, Robot1Odom) {
+  std::cout << "TEST BEGINNING!!" << std::endl;
+  EXPECT_TRUE(true);
+
+  /*
+   * 2.) subscribe to the topic
+   */
+  using nav_msgs::msg::Odometry;
+  using PUBLISHER = rclcpp::Publisher<nav_msgs::msg::Odometry>::SharedPtr;
+  bool hasData = false;
+  PUBLISHER publisher = node_->create_publisher<nav_msgs::msg::Odometry>("/robot1/odom", 10);
+  auto odom_msg_robot = nav_msgs::msg::Odometry();
+  odom_msg_robot.header.stamp = node_->get_clock()->now();
+  odom_msg_robot.header.frame_id = "odom";
+  odom_msg_robot.child_frame_id = "base_footprint";
+  odom_msg_robot.pose.pose.position.x = 0.0;
+  odom_msg_robot.pose.pose.position.y = 0.0;
+  odom_msg_robot.pose.pose.position.z = 0.0;
+  odom_msg_robot.pose.pose.orientation.x =  1.0 ;
+  odom_msg_robot.pose.pose.orientation.x =  0.0 ;
+  odom_msg_robot.pose.pose.orientation.x =  0.0 ;
+  odom_msg_robot.pose.pose.orientation.x =  1.0 ;
+
+  odom_msg_robot.twist.twist.linear.x = 0.0;
+  odom_msg_robot.twist.twist.linear.y = 0.0;
+  odom_msg_robot.twist.twist.linear.z = 0.0;
+  odom_msg_robot.twist.twist.angular.x= 0.0;
+  odom_msg_robot.twist.twist.angular.y= 0.0;
+  odom_msg_robot.twist.twist.angular.z= 0.0;
+  publisher->publish(odom_msg_robot);
+  // /*
+  //  * 3.) check to see if we get data winhin 3 sec
+  //  */
+  using timer = std::chrono::system_clock;
+  using namespace std::chrono_literals;
+  timer::time_point clock_start;
+  timer::duration elapsed_time;
+  clock_start = timer::now();
+  elapsed_time = timer::now() - clock_start;
+  rclcpp::Rate rate(2.0);  // 2hz checks
+  while ((elapsed_time < 3s) && !hasData) {
+    publisher->publish(odom_msg_robot);
+    rclcpp::spin_some(node_);
+    rate.sleep();
+    elapsed_time = timer::now() - clock_start;
+  }
+  // EXPECT_TRUE(hasData);
+}
+
+TEST_F(TaskPlanningFixture, Robot2Odom) {
+  std::cout << "TEST BEGINNING!!" << std::endl;
+  EXPECT_TRUE(true);
+
+  /*
+   * 2.) subscribe to the topic
+   */
+  using nav_msgs::msg::Odometry;
+  using PUBLISHER = rclcpp::Publisher<nav_msgs::msg::Odometry>::SharedPtr;
+  bool hasData = false;
+  PUBLISHER publisher = node_->create_publisher<nav_msgs::msg::Odometry>("/robot2/odom", 10);
+  auto odom_msg_robot = nav_msgs::msg::Odometry();
+  odom_msg_robot.header.stamp = node_->get_clock()->now();
+  odom_msg_robot.header.frame_id = "odom";
+  odom_msg_robot.child_frame_id = "base_footprint";
+  odom_msg_robot.pose.pose.position.x = 0.0;
+  odom_msg_robot.pose.pose.position.y = 0.0;
+  odom_msg_robot.pose.pose.position.z = 0.0;
+  odom_msg_robot.pose.pose.orientation.x =  1.0 ;
+  odom_msg_robot.pose.pose.orientation.x =  0.0 ;
+  odom_msg_robot.pose.pose.orientation.x =  0.0 ;
+  odom_msg_robot.pose.pose.orientation.x =  1.0 ;
+
+  odom_msg_robot.twist.twist.linear.x = 0.0;
+  odom_msg_robot.twist.twist.linear.y = 0.0;
+  odom_msg_robot.twist.twist.linear.z = 0.0;
+  odom_msg_robot.twist.twist.angular.x= 0.0;
+  odom_msg_robot.twist.twist.angular.y= 0.0;
+  odom_msg_robot.twist.twist.angular.z= 0.0;
+  publisher->publish(odom_msg_robot);
+  // /*
+  //  * 3.) check to see if we get data winhin 3 sec
+  //  */
+  using timer = std::chrono::system_clock;
+  using namespace std::chrono_literals;
+  timer::time_point clock_start;
+  timer::duration elapsed_time;
+  clock_start = timer::now();
+  elapsed_time = timer::now() - clock_start;
+  rclcpp::Rate rate(2.0);  // 2hz checks
+  while ((elapsed_time < 3s) && !hasData) {
+    publisher->publish(odom_msg_robot);
+    rclcpp::spin_some(node_);
+    rate.sleep();
+    elapsed_time = timer::now() - clock_start;
+  }
+  // EXPECT_TRUE(hasData);
+}
+
+TEST_F(TaskPlanningFixture, Robot3Odom) {
+  std::cout << "TEST BEGINNING!!" << std::endl;
+  EXPECT_TRUE(true);
+
+  /*
+   * 2.) subscribe to the topic
+   */
+  using nav_msgs::msg::Odometry;
+  using PUBLISHER = rclcpp::Publisher<nav_msgs::msg::Odometry>::SharedPtr;
+  bool hasData = false;
+  PUBLISHER publisher = node_->create_publisher<nav_msgs::msg::Odometry>("/robot3/odom", 10);
+  auto odom_msg_robot = nav_msgs::msg::Odometry();
+  odom_msg_robot.header.stamp = node_->get_clock()->now();
+  odom_msg_robot.header.frame_id = "odom";
+  odom_msg_robot.child_frame_id = "base_footprint";
+  odom_msg_robot.pose.pose.position.x = 0.0;
+  odom_msg_robot.pose.pose.position.y = 0.0;
+  odom_msg_robot.pose.pose.position.z = 0.0;
+  odom_msg_robot.pose.pose.orientation.x =  1.0 ;
+  odom_msg_robot.pose.pose.orientation.x =  0.0 ;
+  odom_msg_robot.pose.pose.orientation.x =  0.0 ;
+  odom_msg_robot.pose.pose.orientation.x =  1.0 ;
+
+  odom_msg_robot.twist.twist.linear.x = 0.0;
+  odom_msg_robot.twist.twist.linear.y = 0.0;
+  odom_msg_robot.twist.twist.linear.z = 0.0;
+  odom_msg_robot.twist.twist.angular.x= 0.0;
+  odom_msg_robot.twist.twist.angular.y= 0.0;
+  odom_msg_robot.twist.twist.angular.z= 0.0;
+  publisher->publish(odom_msg_robot);
+  // /*
+  //  * 3.) check to see if we get data winhin 3 sec
+  //  */
+  using timer = std::chrono::system_clock;
+  using namespace std::chrono_literals;
+  timer::time_point clock_start;
+  timer::duration elapsed_time;
+  clock_start = timer::now();
+  elapsed_time = timer::now() - clock_start;
+  rclcpp::Rate rate(2.0);  // 2hz checks
+  while ((elapsed_time < 3s) && !hasData) {
+    publisher->publish(odom_msg_robot);
+    rclcpp::spin_some(node_);
+    rate.sleep();
+    elapsed_time = timer::now() - clock_start;
+  }
+  // EXPECT_TRUE(hasData);
+}
+
+TEST_F(TaskPlanningFixture, Robot4Odom) {
+  std::cout << "TEST BEGINNING!!" << std::endl;
+  EXPECT_TRUE(true);
+
+  /*
+   * 2.) subscribe to the topic
+   */
+  using nav_msgs::msg::Odometry;
+  using PUBLISHER = rclcpp::Publisher<nav_msgs::msg::Odometry>::SharedPtr;
+  bool hasData = false;
+  PUBLISHER publisher = node_->create_publisher<nav_msgs::msg::Odometry>("/robot4/odom", 10);
+  auto odom_msg_robot = nav_msgs::msg::Odometry();
+  odom_msg_robot.header.stamp = node_->get_clock()->now();
+  odom_msg_robot.header.frame_id = "odom";
+  odom_msg_robot.child_frame_id = "base_footprint";
+  odom_msg_robot.pose.pose.position.x = 0.0;
+  odom_msg_robot.pose.pose.position.y = 0.0;
+  odom_msg_robot.pose.pose.position.z = 0.0;
+  odom_msg_robot.pose.pose.orientation.x =  1.0 ;
+  odom_msg_robot.pose.pose.orientation.x =  0.0 ;
+  odom_msg_robot.pose.pose.orientation.x =  0.0 ;
+  odom_msg_robot.pose.pose.orientation.x =  1.0 ;
+
+  odom_msg_robot.twist.twist.linear.x = 0.0;
+  odom_msg_robot.twist.twist.linear.y = 0.0;
+  odom_msg_robot.twist.twist.linear.z = 0.0;
+  odom_msg_robot.twist.twist.angular.x= 0.0;
+  odom_msg_robot.twist.twist.angular.y= 0.0;
+  odom_msg_robot.twist.twist.angular.z= 0.0;
+  publisher->publish(odom_msg_robot);
+  // /*
+  //  * 3.) check to see if we get data winhin 3 sec
+  //  */
+  using timer = std::chrono::system_clock;
+  using namespace std::chrono_literals;
+  timer::time_point clock_start;
+  timer::duration elapsed_time;
+  clock_start = timer::now();
+  elapsed_time = timer::now() - clock_start;
+  rclcpp::Rate rate(2.0);  // 2hz checks
+  while ((elapsed_time < 3s) && !hasData) {
+    publisher->publish(odom_msg_robot);
+    rclcpp::spin_some(node_);
+    rate.sleep();
+    elapsed_time = timer::now() - clock_start;
+  }
+  // EXPECT_TRUE(hasData);
+}
+
 
 /**
  * @brief The main function that executes the testing functionality

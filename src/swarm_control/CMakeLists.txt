@@ -66,6 +66,7 @@ if(WANT_COVERAGE)
     NAME test_coverage             # target name
     EXECUTABLE ${EXECUTABLE}
     EXCLUDE
+      "libs/*"
       "/usr/include/*"          # Don't analyze system headers
       "/opt/*"                  # Don't analyze system headers
     )

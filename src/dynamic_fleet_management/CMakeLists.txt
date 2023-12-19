@@ -36,7 +36,7 @@ if(BUILD_TESTING)
     $<INSTALL_INTERFACE:include>
   )
   ament_target_dependencies(${PROJECT_NAME}_test
-    rclcpp geometry_msgs
+    rclcpp geometry_msgs nav_msgs
   )
   target_link_libraries(${PROJECT_NAME}_test swarm_control)
 endif()
