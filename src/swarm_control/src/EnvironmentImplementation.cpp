@@ -1,8 +1,8 @@
 /**
  * @file EnvironmentImplementation.cpp
  * @author Vikram Setty (vikrams@umd.edu) Vinay Lanka (vlanka@umd.edu)
- * @brief The file that implements stubs (empty function placeholders) for the
-functions of the 'Environment' class
+ * @brief The file that implements the instance member functions of the
+'Environment' class
  * @version 0.1
  * @date 2023-12-09
  *
@@ -35,6 +35,7 @@ SOFTWARE.
 #include "EnvironmentHeader.hpp"
 #include "SimAgentHeader.hpp"
 #include "Vector2.h"
+
 /**
  * @brief The constructor for the 'Environment' class that initializes the
  * simulation and agents (and their goal positions)
@@ -64,6 +65,12 @@ Environment::Environment(int num_agents, float timestep,
   }
 }
 
+/**
+ * @brief The function that calls all the sub-functions to perform a single
+ * iteration/timestep of the simulation
+ *
+ * @return * void
+ */
 void Environment::perform_iteration() {
   // Set preferred Velocity Step
   for (int i = 0; i < static_cast<int>(sim->getNumAgents()); ++i) {
@@ -92,6 +99,13 @@ void Environment::perform_iteration() {
   }
 }
 
+/**
+ * @brief The function that gets the desired velocities of all the agents from
+ * RVO
+ *
+ * @return * std::vector<std::vector<double>> The desired velocities of all the
+ * agents
+ */
 std::vector<std::vector<double>> Environment::getSimAgentDesiredVelocities() {
   std::vector<std::vector<double>> robot_velocities;
   for (size_t i = 0; i < sim->getNumAgents(); ++i) {
@@ -100,6 +114,13 @@ std::vector<std::vector<double>> Environment::getSimAgentDesiredVelocities() {
   return robot_velocities;
 }
 
+/**
+ * @brief The function that gets the desired positions of all the agents from
+ * RVO
+ *
+ * @return * std::vector<std::vector<double>> The desired positions of all the
+ * agents
+ */
 std::vector<std::vector<double>> Environment::getSimAgentDesiredPositions() {
   std::vector<std::vector<double>> robot_positions;
   for (size_t i = 0; i < sim->getNumAgents(); ++i) {
@@ -108,6 +129,15 @@ std::vector<std::vector<double>> Environment::getSimAgentDesiredPositions() {
   return robot_positions;
 }
 
+/**
+ * @brief The function that updates each agent in the ongoing iteration/timestep
+ * of the simulation
+ *
+ * @param num_agents The total number of agents in the simulation
+ * @param current_positions The current positions of the agents
+ * @param current_velocities The curret velocities of the agents
+ * @return * void
+ */
 void Environment::update_environment(
     int num_agents, std::vector<std::vector<double>> current_positions,
     std::vector<std::vector<double>> current_velocities) {

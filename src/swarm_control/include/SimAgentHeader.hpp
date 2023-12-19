@@ -34,7 +34,7 @@ SOFTWARE.
 
 /**
  * @brief The class that maintains and updates a single agent's position and
- * velocity
+ * velocity, along with the specified desired velocity
  *
  */
 class SimAgent {

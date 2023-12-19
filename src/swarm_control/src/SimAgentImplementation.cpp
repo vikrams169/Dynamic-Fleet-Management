@@ -1,8 +1,8 @@
 /**
  * @file SimAgentImplementation.cpp
  * @author Vikram Setty (vikrams@umd.edu) Vinay Lanka (vlanka@umd.edu)
- * @brief The file that implements stubs (empty function placeholders) for the
-functions of the 'SimAgent' class
+ * @brief The file that implements the instance member functions of the
+'SimAgent' class
  * @version 0.1
  * @date 2023-12-09
  *
@@ -28,9 +28,10 @@ SOFTWARE.
  *
  */
 #include <SimAgentHeader.hpp>
+
 /**
  * @brief The constructor for the 'SimAgent' class that initializes the agent's
- * position and velocity
+ * position, velocity, and heading
  *
  */
 SimAgent::SimAgent(std::vector<double> initial_pos,
@@ -42,11 +43,11 @@ SimAgent::SimAgent(std::vector<double> initial_pos,
 }
 
 /**
- * @brief The function that updates the agent's position and velocity based on
- * the input received from the high-level planner
+ * @brief The function that updates the agent's position, velocity, and heading
+ * based on the input received from the high-level planner
  *
- * @param new_vel The new specified velocity of the agent as specified by the
- * planner
+ * @param current_pos The current position of the agent
+ * @param current_vel The current velocity of the agent
  * @return * void
  */
 void SimAgent::update_agent(std::vector<double> current_pos,
@@ -56,29 +57,48 @@ void SimAgent::update_agent(std::vector<double> current_pos,
   heading = current_pos[2];
   velocity[0] = current_vel[0];
   velocity[1] = current_vel[1];
-  // velocity[0] =
-  // std::sqrt(std::pow(current_vel[0],2)+std::pow(current_vel[1],2));
-  // velocity[1] = std::atan2(current_vel[1],current_vel[0]);
 }
 
+/**
+ * @brief The function that updates the desired velocity of the agent
+ *
+ * @param desired_vel The desired velocity of the agent
+ * @return * void
+ */
 void SimAgent::update_desired_vel(std::vector<double> desired_vel) {
   desired_velocity = desired_vel;
 }
+
+/**
+ * @brief The function that updates the desired position of the agent
+ *
+ * @param desired_pos The desired position of the agent
+ * @return * void
+ */
 void SimAgent::update_desired_pos(std::vector<double> desired_pos) {
   desired_position = desired_pos;
 }
 
+/**
+ * @brief The function that gets the desired velocity of the agent from RVO
+ *
+ * @return * std::vector<double> The desired velocity of the agent
+ */
 std::vector<double> SimAgent::getSimAgentDesiredVelocity() {
   return desired_velocity;
 }
 
+/**
+ * @brief The function that gets the desired position of the agent from RVO
+ *
+ * @return * std::vector<double> The desired position of the agent
+ */
 std::vector<double> SimAgent::getSimAgentDesiredPosition() {
   return desired_position;
 }
 
 /**
- * @brief The destructor for the 'SimAgent' class that deallocates all the
- * dynamically created memory
+ * @brief The destructor for the 'SimAgent' class
  *
  */
 SimAgent::~SimAgent() {}

@@ -49,6 +49,11 @@ SOFTWARE.
 
 using namespace std::chrono_literals;
 
+/**
+ * @brief A class that gives a ROS 2 functionality to the 'swarm control'
+ * library to simulate collision avoidance in Gazebo using Turtlebot 3 Waffle
+ *
+ */
 class RobotCommandPublisher : public rclcpp::Node {
  public:
   RobotCommandPublisher() : Node("robot_commander") {
@@ -101,7 +106,14 @@ class RobotCommandPublisher : public rclcpp::Node {
   }
 
  private:
-  // Odom callbacks
+  /**
+   * @brief The called function from the subscriber callback that uses the
+   * published odometry topic to get the pose of the specified robot (closing
+   * the loop)
+   *
+   * @param msg The '/odom' topic message
+   * @return * std::vector<double> The pose of the robot
+   */
   std::vector<double> extract_pose(nav_msgs::msg::Odometry::SharedPtr msg) {
     tf2::Quaternion q(
         msg->pose.pose.orientation.x, msg->pose.pose.orientation.y,
@@ -118,20 +130,53 @@ class RobotCommandPublisher : public rclcpp::Node {
     return robot_pose;
   }
 
+  /**
+   * @brief The ododmetry callback for Robot 1
+   *
+   * @param msg '/odom' topic message
+   * @return * void
+   */
   void robot1_odom_callback(nav_msgs::msg::Odometry::SharedPtr msg) {
     robot_1_pose = extract_pose(msg);
   }
+
+  /**
+   * @brief The odometry callback for Robot 2
+   *
+   * @param msg '/odom' topic message
+   * @return * void
+   */
   void robot2_odom_callback(nav_msgs::msg::Odometry::SharedPtr msg) {
     robot_2_pose = extract_pose(msg);
   }
+
+  /**
+   * @brief The odometry calllback for Robot 3
+   *
+   * @param msg '/odom' topic message
+   * @return * void
+   */
   void robot3_odom_callback(nav_msgs::msg::Odometry::SharedPtr msg) {
     robot_3_pose = extract_pose(msg);
   }
+
+  /**
+   * @brief The odometry callback for Robot 4
+   *
+   * @param msg '/odom' topic message
+   * @return * void
+   */
   void robot4_odom_callback(nav_msgs::msg::Odometry::SharedPtr msg) {
     robot_4_pose = extract_pose(msg);
   }
 
-  // Publisher Callback
+  /**
+   * @brief The timer callback for the '/cmd_vel' publisher for the
+   * robots/agents that publishes the required angular velocity followed by the
+   * required linear velocity
+   *
+   * @return * void
+   */
   void timer_callback() {
     std::vector<std::vector<double>> robot_poses{robot_1_pose, robot_2_pose,
                                                  robot_3_pose, robot_4_pose};
