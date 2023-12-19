@@ -49,11 +49,20 @@ TEST(BasicTest, Case2) { ASSERT_NEAR(1, 1.01, 0.1); }
  */
 TEST(BasicTest1, Case3) { EXPECT_STREQ("GoTerps", "GoTerps"); }
 
-const int NO_OF_AGENTS = 2;
+const int NO_OF_AGENTS = 4;
 float timestep_val = 0.1;
-std::vector<RVO::Vector2> AGENT_GOALS;
-std::vector<std::vector<double>> current_pos{{0, 0}, {0, 0}};
-std::vector<std::vector<double>> current_vel{{0, 0}, {0, 0}};
+RVO::Vector2 robot_1_goal(5.0f, 5.0f);
+RVO::Vector2 robot_2_goal(-5.0f, -5.0f);
+RVO::Vector2 robot_3_goal(-5.0f, 5.0f);
+RVO::Vector2 robot_4_goal(5.0f, -5.0f);
+std::vector<RVO::Vector2> AGENT_GOALS{robot_1_goal, robot_2_goal, robot_3_goal, robot_4_goal};
+std::vector<double> robot_1_pose{-5.0f, -5.0f, 0.0};
+std::vector<double> robot_2_pose{5.0f, 5.0f, 0.0};
+std::vector<double> robot_3_pose{5.0f, -5.0f, 0.0};
+std::vector<double> robot_4_pose{-5.0f, 5.0f, 0.0};
+std::vector<std::vector<double>> start_positions{robot_1_pose, robot_2_pose, robot_3_pose, robot_4_pose};
+// std::vector<std::vector<double>> current_pos{{0, 0}, {0, 0}, {0, 0}, {0, 0}};
+std::vector<std::vector<double>> current_vel{{0, 0}, {0, 0}, {0, 0}, {0, 0}};
 
 /**
  * @brief Text fixture class for testing the Environment class.
@@ -64,7 +73,7 @@ class EnvironmentTests : public testing::Test {
  protected:
   void SetUp() override {
     testEnvironment =
-        new Environment(NO_OF_AGENTS, timestep_val, current_pos, AGENT_GOALS);
+        new Environment(NO_OF_AGENTS, timestep_val, start_positions, AGENT_GOALS);
     std::cout << "Calling Fixture SetUp\n";
   };
 
@@ -81,7 +90,7 @@ class EnvironmentTests : public testing::Test {
 //  */
 TEST_F(EnvironmentTests, test_perform_iteration) {
   testEnvironment->perform_iteration();
-  testEnvironment->update_environment(NO_OF_AGENTS, current_pos, current_vel);
+  testEnvironment->update_environment(NO_OF_AGENTS, start_positions, current_vel);
   std::vector<std::vector<double>> v1 =
       testEnvironment->getSimAgentDesiredVelocities();
   std::vector<std::vector<double>> v2 =
