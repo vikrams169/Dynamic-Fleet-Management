@@ -14,6 +14,13 @@ find_package(std_msgs REQUIRED)
 find_package(geometry_msgs REQUIRED)
 find_package(Doxygen REQUIRED)
 find_package(swarm_control REQUIRED) # add my_model
+find_package(sensor_msgs REQUIRED)
+find_package(nav_msgs REQUIRED)
+find_package(rosidl_default_generators REQUIRED)
+find_package(rosbag2_cpp REQUIRED)
+find_package(tf2 REQUIRED)
+find_package(tf2_ros REQUIRED)
+find_package(ament_cmake_gtest)
 
 ############################################
 # Set up level 2 unit test (i.e, integration test)
@@ -108,6 +115,9 @@ install(TARGETS
 # install launch files
 install(DIRECTORY
   launch
+  models
+  worlds
+  urdf
   DESTINATION share/${PROJECT_NAME}
 )
 
