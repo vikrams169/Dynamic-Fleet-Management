@@ -117,7 +117,7 @@ class TaskPlanningFixture : public testing::Test {
 
 /**
  * @brief Construct a new test f object for testing out command velocity
- * 
+ *
  */
 TEST_F(TaskPlanningFixture, Robot1CmdVel) {
   std::cout << "TEST BEGINNING!!" << std::endl;
@@ -159,7 +159,7 @@ TEST_F(TaskPlanningFixture, Robot1CmdVel) {
 
 /**
  * @brief Construct a new test f object for testing out command velocity
- * 
+ *
  */
 TEST_F(TaskPlanningFixture, Robot2CmdVel) {
   std::cout << "TEST BEGINNING!!" << std::endl;
@@ -201,7 +201,7 @@ TEST_F(TaskPlanningFixture, Robot2CmdVel) {
 
 /**
  * @brief Construct a new test f object for testing out command velocity
- * 
+ *
  */
 TEST_F(TaskPlanningFixture, Robot3CmdVel) {
   std::cout << "TEST BEGINNING!!" << std::endl;
@@ -243,7 +243,7 @@ TEST_F(TaskPlanningFixture, Robot3CmdVel) {
 
 /**
  * @brief Construct a new test f object for testing out command velocity
- * 
+ *
  */
 TEST_F(TaskPlanningFixture, Robot4CmdVel) {
   std::cout << "TEST BEGINNING!!" << std::endl;
@@ -286,7 +286,7 @@ TEST_F(TaskPlanningFixture, Robot4CmdVel) {
 using namespace std::chrono_literals;
 /**
  * @brief Construct a new test f object for subscription
- * 
+ *
  */
 TEST_F(TaskPlanningFixture, Robot1Odom) {
   std::cout << "TEST BEGINNING!!" << std::endl;
@@ -298,7 +298,8 @@ TEST_F(TaskPlanningFixture, Robot1Odom) {
   using nav_msgs::msg::Odometry;
   using PUBLISHER = rclcpp::Publisher<nav_msgs::msg::Odometry>::SharedPtr;
   bool hasData = false;
-  PUBLISHER publisher = node_->create_publisher<nav_msgs::msg::Odometry>("/robot1/odom", 10);
+  PUBLISHER publisher =
+      node_->create_publisher<nav_msgs::msg::Odometry>("/robot1/odom", 10);
   auto odom_msg_robot = nav_msgs::msg::Odometry();
   odom_msg_robot.header.stamp = node_->get_clock()->now();
   odom_msg_robot.header.frame_id = "odom";
@@ -306,17 +307,17 @@ TEST_F(TaskPlanningFixture, Robot1Odom) {
   odom_msg_robot.pose.pose.position.x = 0.0;
   odom_msg_robot.pose.pose.position.y = 0.0;
   odom_msg_robot.pose.pose.position.z = 0.0;
-  odom_msg_robot.pose.pose.orientation.x =  1.0 ;
-  odom_msg_robot.pose.pose.orientation.x =  0.0 ;
-  odom_msg_robot.pose.pose.orientation.x =  0.0 ;
-  odom_msg_robot.pose.pose.orientation.x =  1.0 ;
+  odom_msg_robot.pose.pose.orientation.x = 1.0;
+  odom_msg_robot.pose.pose.orientation.x = 0.0;
+  odom_msg_robot.pose.pose.orientation.x = 0.0;
+  odom_msg_robot.pose.pose.orientation.x = 1.0;
 
   odom_msg_robot.twist.twist.linear.x = 0.0;
   odom_msg_robot.twist.twist.linear.y = 0.0;
   odom_msg_robot.twist.twist.linear.z = 0.0;
-  odom_msg_robot.twist.twist.angular.x= 0.0;
-  odom_msg_robot.twist.twist.angular.y= 0.0;
-  odom_msg_robot.twist.twist.angular.z= 0.0;
+  odom_msg_robot.twist.twist.angular.x = 0.0;
+  odom_msg_robot.twist.twist.angular.y = 0.0;
+  odom_msg_robot.twist.twist.angular.z = 0.0;
   publisher->publish(odom_msg_robot);
   // /*
   //  * 3.) check to see if we get data winhin 3 sec
@@ -347,7 +348,8 @@ TEST_F(TaskPlanningFixture, Robot2Odom) {
   using nav_msgs::msg::Odometry;
   using PUBLISHER = rclcpp::Publisher<nav_msgs::msg::Odometry>::SharedPtr;
   bool hasData = false;
-  PUBLISHER publisher = node_->create_publisher<nav_msgs::msg::Odometry>("/robot2/odom", 10);
+  PUBLISHER publisher =
+      node_->create_publisher<nav_msgs::msg::Odometry>("/robot2/odom", 10);
   auto odom_msg_robot = nav_msgs::msg::Odometry();
   odom_msg_robot.header.stamp = node_->get_clock()->now();
   odom_msg_robot.header.frame_id = "odom";
@@ -355,17 +357,17 @@ TEST_F(TaskPlanningFixture, Robot2Odom) {
   odom_msg_robot.pose.pose.position.x = 0.0;
   odom_msg_robot.pose.pose.position.y = 0.0;
   odom_msg_robot.pose.pose.position.z = 0.0;
-  odom_msg_robot.pose.pose.orientation.x =  1.0 ;
-  odom_msg_robot.pose.pose.orientation.x =  0.0 ;
-  odom_msg_robot.pose.pose.orientation.x =  0.0 ;
-  odom_msg_robot.pose.pose.orientation.x =  1.0 ;
+  odom_msg_robot.pose.pose.orientation.x = 1.0;
+  odom_msg_robot.pose.pose.orientation.x = 0.0;
+  odom_msg_robot.pose.pose.orientation.x = 0.0;
+  odom_msg_robot.pose.pose.orientation.x = 1.0;
 
   odom_msg_robot.twist.twist.linear.x = 0.0;
   odom_msg_robot.twist.twist.linear.y = 0.0;
   odom_msg_robot.twist.twist.linear.z = 0.0;
-  odom_msg_robot.twist.twist.angular.x= 0.0;
-  odom_msg_robot.twist.twist.angular.y= 0.0;
-  odom_msg_robot.twist.twist.angular.z= 0.0;
+  odom_msg_robot.twist.twist.angular.x = 0.0;
+  odom_msg_robot.twist.twist.angular.y = 0.0;
+  odom_msg_robot.twist.twist.angular.z = 0.0;
   publisher->publish(odom_msg_robot);
   // /*
   //  * 3.) check to see if we get data winhin 3 sec
@@ -396,7 +398,8 @@ TEST_F(TaskPlanningFixture, Robot3Odom) {
   using nav_msgs::msg::Odometry;
   using PUBLISHER = rclcpp::Publisher<nav_msgs::msg::Odometry>::SharedPtr;
   bool hasData = false;
-  PUBLISHER publisher = node_->create_publisher<nav_msgs::msg::Odometry>("/robot3/odom", 10);
+  PUBLISHER publisher =
+      node_->create_publisher<nav_msgs::msg::Odometry>("/robot3/odom", 10);
   auto odom_msg_robot = nav_msgs::msg::Odometry();
   odom_msg_robot.header.stamp = node_->get_clock()->now();
   odom_msg_robot.header.frame_id = "odom";
@@ -404,17 +407,17 @@ TEST_F(TaskPlanningFixture, Robot3Odom) {
   odom_msg_robot.pose.pose.position.x = 0.0;
   odom_msg_robot.pose.pose.position.y = 0.0;
   odom_msg_robot.pose.pose.position.z = 0.0;
-  odom_msg_robot.pose.pose.orientation.x =  1.0 ;
-  odom_msg_robot.pose.pose.orientation.x =  0.0 ;
-  odom_msg_robot.pose.pose.orientation.x =  0.0 ;
-  odom_msg_robot.pose.pose.orientation.x =  1.0 ;
+  odom_msg_robot.pose.pose.orientation.x = 1.0;
+  odom_msg_robot.pose.pose.orientation.x = 0.0;
+  odom_msg_robot.pose.pose.orientation.x = 0.0;
+  odom_msg_robot.pose.pose.orientation.x = 1.0;
 
   odom_msg_robot.twist.twist.linear.x = 0.0;
   odom_msg_robot.twist.twist.linear.y = 0.0;
   odom_msg_robot.twist.twist.linear.z = 0.0;
-  odom_msg_robot.twist.twist.angular.x= 0.0;
-  odom_msg_robot.twist.twist.angular.y= 0.0;
-  odom_msg_robot.twist.twist.angular.z= 0.0;
+  odom_msg_robot.twist.twist.angular.x = 0.0;
+  odom_msg_robot.twist.twist.angular.y = 0.0;
+  odom_msg_robot.twist.twist.angular.z = 0.0;
   publisher->publish(odom_msg_robot);
   // /*
   //  * 3.) check to see if we get data winhin 3 sec
@@ -445,7 +448,8 @@ TEST_F(TaskPlanningFixture, Robot4Odom) {
   using nav_msgs::msg::Odometry;
   using PUBLISHER = rclcpp::Publisher<nav_msgs::msg::Odometry>::SharedPtr;
   bool hasData = false;
-  PUBLISHER publisher = node_->create_publisher<nav_msgs::msg::Odometry>("/robot4/odom", 10);
+  PUBLISHER publisher =
+      node_->create_publisher<nav_msgs::msg::Odometry>("/robot4/odom", 10);
   auto odom_msg_robot = nav_msgs::msg::Odometry();
   odom_msg_robot.header.stamp = node_->get_clock()->now();
   odom_msg_robot.header.frame_id = "odom";
@@ -453,17 +457,17 @@ TEST_F(TaskPlanningFixture, Robot4Odom) {
   odom_msg_robot.pose.pose.position.x = 0.0;
   odom_msg_robot.pose.pose.position.y = 0.0;
   odom_msg_robot.pose.pose.position.z = 0.0;
-  odom_msg_robot.pose.pose.orientation.x =  1.0 ;
-  odom_msg_robot.pose.pose.orientation.x =  0.0 ;
-  odom_msg_robot.pose.pose.orientation.x =  0.0 ;
-  odom_msg_robot.pose.pose.orientation.x =  1.0 ;
+  odom_msg_robot.pose.pose.orientation.x = 1.0;
+  odom_msg_robot.pose.pose.orientation.x = 0.0;
+  odom_msg_robot.pose.pose.orientation.x = 0.0;
+  odom_msg_robot.pose.pose.orientation.x = 1.0;
 
   odom_msg_robot.twist.twist.linear.x = 0.0;
   odom_msg_robot.twist.twist.linear.y = 0.0;
   odom_msg_robot.twist.twist.linear.z = 0.0;
-  odom_msg_robot.twist.twist.angular.x= 0.0;
-  odom_msg_robot.twist.twist.angular.y= 0.0;
-  odom_msg_robot.twist.twist.angular.z= 0.0;
+  odom_msg_robot.twist.twist.angular.x = 0.0;
+  odom_msg_robot.twist.twist.angular.y = 0.0;
+  odom_msg_robot.twist.twist.angular.z = 0.0;
   publisher->publish(odom_msg_robot);
   // /*
   //  * 3.) check to see if we get data winhin 3 sec
@@ -483,7 +487,6 @@ TEST_F(TaskPlanningFixture, Robot4Odom) {
   }
   // EXPECT_TRUE(hasData);
 }
-
 
 /**
  * @brief The main function that executes the testing functionality

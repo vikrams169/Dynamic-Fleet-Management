@@ -15,9 +15,9 @@ We present DFM (Dynamic Fleet Management), a multi-robot swarm management platfo
 
 DFM works using an RVO 2-based centralized path planner that gives ideal velocities based on specified goal positions and other agents' positions. It does so by using the Reciprocal Collision Avoidance Algorithm, using which it receives a high level of performance.
 
-This project contains a demonstration to run a Gazebo simulation where four Turtlebot3 Waffle Pi robots reach their goal positions by solving a deadlocked state (where the motion of each robot depedns on the motion of other robots leading to an infitely stationary period). The video showing a run of this demonstration is attached below
+This project contains a demonstration to run a Gazebo simulation where four Turtlebot3 Waffle Pi robots reach their goal positions by solving a deadlocked state (where the motion of each robot depedns on the motion of other robots leading to an infitely stationary period). The video showing a run of this demonstration is attached (embedded) below. A direct link to the same can also be found [here](https://youtu.be/1cPTRiXnLuE).
 
-[![Video](images/deadlock_prevention.png)](https://drive.google.com/file/d/106vmVoiUW7vUvUSkB2EyfJ89jl8wBam7/view?usp=sharing)
+[![Video](images/deadlock_prevention.png)](https://youtu.be/1cPTRiXnLuE)
 
 ### About the Authors
 The authors of DFM are Vikram Setty and Vinay Lanka, both robotics graduate students at the University of Maryland.
