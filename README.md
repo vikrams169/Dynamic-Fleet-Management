@@ -17,7 +17,7 @@ DFM works using an RVO 2-based centralized path planner that gives ideal velocit
 
 This project contains a demonstration to run a Gazebo simulation where four Turtlebot3 Waffle Pi robots reach their goal positions by solving a deadlocked state (where the motion of each robot depedns on the motion of other robots leading to an infitely stationary period). The video showing a run of this demonstration is attached below
 
-[![Video](https://github.com/vikrams169/Dynamic-Fleet-Management/tree/main/images/deadlock_prevention.jpg)](https://drive.google.com/file/d/106vmVoiUW7vUvUSkB2EyfJ89jl8wBam7/view?usp=sharing)
+[![Video](images/deadlock_prevention.png)](https://drive.google.com/file/d/106vmVoiUW7vUvUSkB2EyfJ89jl8wBam7/view?usp=sharing)
 
 ### About the Authors
 The authors of DFM are Vikram Setty and Vinay Lanka, both robotics graduate students at the University of Maryland.
