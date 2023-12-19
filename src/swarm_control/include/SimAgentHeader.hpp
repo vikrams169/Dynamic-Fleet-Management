@@ -34,16 +34,25 @@ SOFTWARE.
 
 /**
  * @brief The class that maintains and updates a single agent's position and
- * velocity
+ * velocity, along with the specified desired velocity
  *
  */
 class SimAgent {
  private:
-  std::vector<double> position;
+  std::vector<double> position{0.0f, 0.0f};
+  double heading;
   std::vector<double> velocity;
+  std::vector<double> desired_velocity;
+  std::vector<double> desired_position;
 
  public:
   SimAgent(std::vector<double> initial_pos, std::vector<double> initial_vel);
-  void move_agent(std::vector<double> new_vel);
+  void update_vel(std::vector<double> vel);
+  void update_desired_vel(std::vector<double> desired_vel);
+  void update_desired_pos(std::vector<double> desired_pos);
+  void update_agent(std::vector<double> current_pos,
+                    std::vector<double> current_vel);
+  std::vector<double> getSimAgentDesiredVelocity();
+  std::vector<double> getSimAgentDesiredPosition();
   ~SimAgent();
 };

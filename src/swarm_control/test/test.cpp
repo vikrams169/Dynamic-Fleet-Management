@@ -35,22 +35,25 @@ SOFTWARE.
  * @brief A basic test to check integer equality
  *
  */
-TEST(Test1, Case1) { EXPECT_EQ(1, 1); }
+TEST(BasicTest, Case1) { EXPECT_EQ(1, 1); }
 
 /**
  * @brief A basic test to check numerical approximation
  *
  */
-TEST(Test1, Case2) { ASSERT_NEAR(1, 1.01, 0.1); }
+TEST(BasicTest, Case2) { ASSERT_NEAR(1, 1.01, 0.1); }
 
 /**
  * @brief A basic test to check string equality
  *
  */
-TEST(Test1, Case3) { EXPECT_STREQ("GoTerps", "GoTerps"); }
+TEST(BasicTest1, Case3) { EXPECT_STREQ("GoTerps", "GoTerps"); }
 
 const int NO_OF_AGENTS = 2;
+float timestep_val = 0.1;
 std::vector<RVO::Vector2> AGENT_GOALS;
+std::vector<std::vector<double>> current_pos;
+std::vector<std::vector<double>> current_vel;
 
 /**
  * @brief Text fixture class for testing the Environment class.
@@ -60,33 +63,40 @@ class EnvironmentTests : public testing::Test {
  public:
  protected:
   void SetUp() override {
-    testEnviroment = new Environment(NO_OF_AGENTS, AGENT_GOALS);
+    testEnvironment =
+        new Environment(NO_OF_AGENTS, timestep_val, current_pos, AGENT_GOALS);
     std::cout << "Calling Fixture SetUp\n";
   };
 
   void TearDown() override {
-    delete testEnviroment;
+    delete testEnvironment;
     std::cout << "Calling Fixture TearDown\n";
   };
-  Environment *testEnviroment;
+  Environment *testEnvironment;
 };
 
-/**
- * @brief Testing the perform_iteration method of the Environment class
- *
- */
+// /**
+//  * @brief Testing the public methods of the Environment class
+//  *
+//  */
 TEST_F(EnvironmentTests, test_perform_iteration) {
-  testEnviroment->perform_iteration();
+  testEnvironment->perform_iteration();
+  testEnvironment->update_environment(NO_OF_AGENTS, current_pos, current_vel);
+  std::vector<std::vector<double>> v1 =
+      testEnvironment->getSimAgentDesiredVelocities();
+  std::vector<std::vector<double>> v2 =
+      testEnvironment->getSimAgentDesiredPositions();
 }
 
 std::vector<double> initial_pos = {0, 0};
 std::vector<double> initial_vel = {0, 0};
 std::vector<double> new_vel = {0, 0};
+std::vector<double> des_pos = {0, 0};
 
-/**
- * @brief Text fixture class for testing the SimAgent class.
- *
- */
+// /**
+//  * @brief Text fixture class for testing the SimAgent class.
+//  *
+//  */
 class SimAgentTests : public testing::Test {
  public:
  protected:
@@ -102,10 +112,15 @@ class SimAgentTests : public testing::Test {
   SimAgent *testSimAgent;
 };
 
-/**
- * @brief Testing the move_agent method of the SimAgent class
- *
- */
+// /**
+//  * @brief Testing the public methods of the SimAgent class
+//  *
+//  */
 TEST_F(SimAgentTests, test_perform_iteration) {
-  testSimAgent->move_agent(new_vel);
+  testSimAgent->update_vel(new_vel);
+  testSimAgent->update_desired_vel(new_vel);
+  testSimAgent->update_desired_pos(des_pos);
+  testSimAgent->update_agent(initial_pos, initial_vel);
+  std::vector<double> v1 = testSimAgent->getSimAgentDesiredVelocity();
+  std::vector<double> v2 = testSimAgent->getSimAgentDesiredPosition();
 }

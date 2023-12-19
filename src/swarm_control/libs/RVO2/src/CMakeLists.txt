@@ -54,5 +54,5 @@ endif()
 install(FILES ${RVO_HEADERS} DESTINATION include)
 # install(TARGETS RVO DESTINATION lib)
 install(TARGETS RVO EXPORT swarm_control-export
-DESTINATION lib/${PROJECT_NAME}
+DESTINATION lib
 )

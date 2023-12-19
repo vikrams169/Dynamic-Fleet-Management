@@ -12,6 +12,9 @@ find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
 find_package(geometry_msgs REQUIRED)
+find_package(nav_msgs REQUIRED)
+find_package(tf2 REQUIRED)
+find_package(tf2_geometry_msgs REQUIRED)
 find_package(Doxygen REQUIRED)
 find_package(swarm_control REQUIRED) # add my_model
 
@@ -92,7 +95,7 @@ add_executable(robot_commander
  src/main.cpp)
 
 # Add executable dependencis:
-ament_target_dependencies(robot_commander rclcpp geometry_msgs)
+ament_target_dependencies(robot_commander rclcpp geometry_msgs nav_msgs tf2 tf2_geometry_msgs)
 target_link_libraries(robot_commander swarm_control)
 
 
@@ -108,6 +111,9 @@ install(TARGETS
 # install launch files
 install(DIRECTORY
   launch
+  models
+  worlds
+  urdf
   DESTINATION share/${PROJECT_NAME}
 )
 
