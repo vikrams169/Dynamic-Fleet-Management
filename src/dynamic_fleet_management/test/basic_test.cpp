@@ -114,7 +114,7 @@ class TaskPlanningFixture : public testing::Test {
   }
 };
 
-TEST_F(TaskPlanningFixture, TrueIsTrueTest) {
+TEST_F(TaskPlanningFixture, Robot1CmdVel) {
   std::cout << "TEST BEGINNING!!" << std::endl;
   EXPECT_TRUE(true);
 
@@ -126,7 +126,121 @@ TEST_F(TaskPlanningFixture, TrueIsTrueTest) {
   bool hasData = false;
   SUBSCRIBER subscription =
       node_->create_subscription<geometry_msgs::msg::Twist>(
-          "/cmd_vel", 10,
+          "/robot1/cmd_vel", 10,
+          // Lambda expression begins
+          [&](const geometry_msgs::msg::Twist& msg) {
+            RCLCPP_INFO(node_->get_logger(), "I heard: '%f'", msg.linear.x);
+            hasData = true;
+          }  // end of lambda expression
+      );
+
+  /*
+   * 3.) check to see if we get data winhin 3 sec
+   */
+  using timer = std::chrono::system_clock;
+  using namespace std::chrono_literals;
+  timer::time_point clock_start;
+  timer::duration elapsed_time;
+  clock_start = timer::now();
+  elapsed_time = timer::now() - clock_start;
+  rclcpp::Rate rate(2.0);  // 2hz checks
+  while ((elapsed_time < 3s) && !hasData) {
+    rclcpp::spin_some(node_);
+    rate.sleep();
+    elapsed_time = timer::now() - clock_start;
+  }
+  EXPECT_TRUE(hasData);
+}
+
+TEST_F(TaskPlanningFixture, Robot2CmdVel) {
+  std::cout << "TEST BEGINNING!!" << std::endl;
+  EXPECT_TRUE(true);
+
+  /*
+   * 2.) subscribe to the topic
+   */
+  using geometry_msgs::msg::Twist;
+  using SUBSCRIBER = rclcpp::Subscription<geometry_msgs::msg::Twist>::SharedPtr;
+  bool hasData = false;
+  SUBSCRIBER subscription =
+      node_->create_subscription<geometry_msgs::msg::Twist>(
+          "/robot2/cmd_vel", 10,
+          // Lambda expression begins
+          [&](const geometry_msgs::msg::Twist& msg) {
+            RCLCPP_INFO(node_->get_logger(), "I heard: '%f'", msg.linear.x);
+            hasData = true;
+          }  // end of lambda expression
+      );
+
+  /*
+   * 3.) check to see if we get data winhin 3 sec
+   */
+  using timer = std::chrono::system_clock;
+  using namespace std::chrono_literals;
+  timer::time_point clock_start;
+  timer::duration elapsed_time;
+  clock_start = timer::now();
+  elapsed_time = timer::now() - clock_start;
+  rclcpp::Rate rate(2.0);  // 2hz checks
+  while ((elapsed_time < 3s) && !hasData) {
+    rclcpp::spin_some(node_);
+    rate.sleep();
+    elapsed_time = timer::now() - clock_start;
+  }
+  EXPECT_TRUE(hasData);
+}
+
+TEST_F(TaskPlanningFixture, Robot3CmdVel) {
+  std::cout << "TEST BEGINNING!!" << std::endl;
+  EXPECT_TRUE(true);
+
+  /*
+   * 2.) subscribe to the topic
+   */
+  using geometry_msgs::msg::Twist;
+  using SUBSCRIBER = rclcpp::Subscription<geometry_msgs::msg::Twist>::SharedPtr;
+  bool hasData = false;
+  SUBSCRIBER subscription =
+      node_->create_subscription<geometry_msgs::msg::Twist>(
+          "/robot3/cmd_vel", 10,
+          // Lambda expression begins
+          [&](const geometry_msgs::msg::Twist& msg) {
+            RCLCPP_INFO(node_->get_logger(), "I heard: '%f'", msg.linear.x);
+            hasData = true;
+          }  // end of lambda expression
+      );
+
+  /*
+   * 3.) check to see if we get data winhin 3 sec
+   */
+  using timer = std::chrono::system_clock;
+  using namespace std::chrono_literals;
+  timer::time_point clock_start;
+  timer::duration elapsed_time;
+  clock_start = timer::now();
+  elapsed_time = timer::now() - clock_start;
+  rclcpp::Rate rate(2.0);  // 2hz checks
+  while ((elapsed_time < 3s) && !hasData) {
+    rclcpp::spin_some(node_);
+    rate.sleep();
+    elapsed_time = timer::now() - clock_start;
+  }
+  EXPECT_TRUE(hasData);
+}
+
+TEST_F(TaskPlanningFixture, Robot4CmdVel) {
+  std::cout << "TEST BEGINNING!!" << std::endl;
+  EXPECT_TRUE(true);
+
+  /*
+   * 2.) subscribe to the topic
+   */
+  using geometry_msgs::msg::Twist;
+  using SUBSCRIBER = rclcpp::Subscription<geometry_msgs::msg::Twist>::SharedPtr;
+  bool hasData = false;
+  SUBSCRIBER subscription =
+      node_->create_subscription<geometry_msgs::msg::Twist>(
+          "/robot4/cmd_vel", 10,
           // Lambda expression begins
           [&](const geometry_msgs::msg::Twist& msg) {
             RCLCPP_INFO(node_->get_logger(), "I heard: '%f'", msg.linear.x);

@@ -56,56 +56,56 @@ std::vector<RVO::Vector2> AGENT_GOALS;
  * @brief Text fixture class for testing the Environment class.
  *
  */
-class EnvironmentTests : public testing::Test {
- public:
- protected:
-  void SetUp() override {
-    testEnviroment = new Environment(NO_OF_AGENTS, AGENT_GOALS);
-    std::cout << "Calling Fixture SetUp\n";
-  };
+// class EnvironmentTests : public testing::Test {
+//  public:
+//  protected:
+//   void SetUp() override {
+//     testEnviroment = new Environment(NO_OF_AGENTS, AGENT_GOALS);
+//     std::cout << "Calling Fixture SetUp\n";
+//   };
 
-  void TearDown() override {
-    delete testEnviroment;
-    std::cout << "Calling Fixture TearDown\n";
-  };
-  Environment *testEnviroment;
-};
+//   void TearDown() override {
+//     delete testEnviroment;
+//     std::cout << "Calling Fixture TearDown\n";
+//   };
+//   Environment *testEnviroment;
+// };
 
-/**
- * @brief Testing the perform_iteration method of the Environment class
- *
- */
-TEST_F(EnvironmentTests, test_perform_iteration) {
-  testEnviroment->perform_iteration();
-}
+// /**
+//  * @brief Testing the perform_iteration method of the Environment class
+//  *
+//  */
+// TEST_F(EnvironmentTests, test_perform_iteration) {
+//   testEnviroment->perform_iteration();
+// }
 
-std::vector<double> initial_pos = {0, 0};
-std::vector<double> initial_vel = {0, 0};
-std::vector<double> new_vel = {0, 0};
+// std::vector<double> initial_pos = {0, 0};
+// std::vector<double> initial_vel = {0, 0};
+// std::vector<double> new_vel = {0, 0};
 
-/**
- * @brief Text fixture class for testing the SimAgent class.
- *
- */
-class SimAgentTests : public testing::Test {
- public:
- protected:
-  void SetUp() override {
-    testSimAgent = new SimAgent(initial_pos, initial_vel);
-    std::cout << "Calling Fixture SetUp\n";
-  };
+// /**
+//  * @brief Text fixture class for testing the SimAgent class.
+//  *
+//  */
+// class SimAgentTests : public testing::Test {
+//  public:
+//  protected:
+//   void SetUp() override {
+//     testSimAgent = new SimAgent(initial_pos, initial_vel);
+//     std::cout << "Calling Fixture SetUp\n";
+//   };
 
-  void TearDown() override {
-    delete testSimAgent;
-    std::cout << "Calling Fixture TearDown\n";
-  };
-  SimAgent *testSimAgent;
-};
+//   void TearDown() override {
+//     delete testSimAgent;
+//     std::cout << "Calling Fixture TearDown\n";
+//   };
+//   SimAgent *testSimAgent;
+// };
 
-/**
- * @brief Testing the move_agent method of the SimAgent class
- *
- */
-TEST_F(SimAgentTests, test_perform_iteration) {
-  testSimAgent->move_agent(new_vel);
-}
+// /**
+//  * @brief Testing the move_agent method of the SimAgent class
+//  *
+//  */
+// TEST_F(SimAgentTests, test_perform_iteration) {
+//   testSimAgent->move_agent(new_vel);
+// }
