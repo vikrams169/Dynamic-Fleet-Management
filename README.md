@@ -6,12 +6,8 @@
 
 **DFM**: A swarm robotics platform that incorporates multi-agent collision avoidance and path-planning capabilities to lead multiple robots to their goal positions in a shared obstacle-ridden environment
 
-This repository contains the deliverables for the Endterm Project of **Vikram Setty** (119696897) and **Vinay Lanka** (12041665) as a part of the course *ENPM808X: Software Development for Robotics* at the University of Maryland.
-
-## Phase 2
-
 ### Project Overview
-We present DFM (Dynamic Fleet Management), a multi-robot swarm management platform for Acme Robotics’ warehouse robot group. This project would give a set of warehouse robots the ability to autonomously navigate to their goal positions in a warehouse setting while avoiding collisions with nearby agents.
+We present DFM (Dynamic Fleet Management), a multi-robot swarm management platform. This project would give a set of robots the ability to autonomously navigate themselves to their respective goal positions while avoiding collisions with nearby agents.
 
 DFM works using an RVO 2-based centralized path planner that gives ideal velocities based on specified goal positions and other agents' positions. It does so by using the Reciprocal Collision Avoidance Algorithm, using which it receives a high level of performance.
 
